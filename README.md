@@ -1,1 +1,0 @@
-# Camera_sys_ros
