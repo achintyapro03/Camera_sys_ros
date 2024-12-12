@@ -1,0 +1,14 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from camera_interface_pkg/msg/Points.msg
+// generated code does not contain a copyright notice
+
+
+module camera_interface_pkg {
+  module msg {
+    struct Points {
+      double x;
+
+      double y;
+    };
+  };
+};

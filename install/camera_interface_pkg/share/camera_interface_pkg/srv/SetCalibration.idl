@@ -1,0 +1,19 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from camera_interface_pkg/srv/SetCalibration.srv
+// generated code does not contain a copyright notice
+
+
+module camera_interface_pkg {
+  module srv {
+    struct SetCalibration_Request {
+      @verbatim (language="comment", text=
+        "True if calibration is successful, False otherwise")
+      boolean calibrated;
+    };
+    struct SetCalibration_Response {
+      @verbatim (language="comment", text=
+        "Returns whether the operation was successful")
+      boolean success;
+    };
+  };
+};

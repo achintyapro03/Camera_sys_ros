@@ -1,0 +1,15 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from camera_interface_pkg/srv/UpdateN20SetPoints.srv
+// generated code does not contain a copyright notice
+
+
+module camera_interface_pkg {
+  module srv {
+    struct UpdateN20SetPoints_Request {
+      sequence<int32> setpoints;
+    };
+    struct UpdateN20SetPoints_Response {
+      boolean success;
+    };
+  };
+};

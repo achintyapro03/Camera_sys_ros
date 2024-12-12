@@ -1,0 +1,28 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from camera_interface_pkg/msg/RobotState.msg
+// generated code does not contain a copyright notice
+
+
+module camera_interface_pkg {
+  module msg {
+    struct RobotState {
+      boolean on_off;
+
+      double n20_angle1;
+
+      double n20_angle2;
+
+      double n20_angle3;
+
+      double n20_angle4;
+
+      double n20_angle5;
+
+      double wrist_servo_angle;
+
+      double thumb_servo_angle;
+
+      double wrist_stepper_angle;
+    };
+  };
+};

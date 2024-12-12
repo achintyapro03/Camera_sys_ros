@@ -1,0 +1,13 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from camera_interface_pkg/msg/PointsList.msg
+// generated code does not contain a copyright notice
+
+#include "camera_interface_pkg/msg/Points.idl"
+
+module camera_interface_pkg {
+  module msg {
+    struct PointsList {
+      sequence<camera_interface_pkg::msg::Points> points_list;
+    };
+  };
+};

@@ -1,0 +1,3 @@
+bool calibrated  # True if calibration is successful, False otherwise
+---
+bool success     # Returns whether the operation was successful
