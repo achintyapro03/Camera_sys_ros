@@ -9,7 +9,7 @@ def generate_launch_description():
 
     # Declare parameters for the first camera node
     ld.add_action(DeclareLaunchArgument('camera_id_1', default_value='0', description='Camera ID for the first node'))
-    ld.add_action(DeclareLaunchArgument('camera_name_1', default_value='cam_1', description='Camera name for the first node'))
+    ld.add_action(DeclareLaunchArgument('camera_name_1', default_value='cam_left', description='Camera name for the first node'))
     ld.add_action(DeclareLaunchArgument('starting_mode_1', default_value='3', description='Starting mode for the first node'))
 
     # Declare parameters for the second camera node

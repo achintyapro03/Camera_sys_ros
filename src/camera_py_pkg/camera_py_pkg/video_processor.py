@@ -28,7 +28,8 @@ class CameraNode(Node):
         self.running = True
 
         # Publisher for points_list
-        self.points_publisher = self.create_publisher(PointsList, f'camera{self.cam_id}/points_list', 10)
+        self.points_publisher = self.create_publisher(PointsList, f'{self.cam_name}/points_list', 10)
+        self.get_logger().warning(f"node started")
 
         self.run()
 
@@ -36,6 +37,8 @@ class CameraNode(Node):
         msg = PointsList()
         # Convert the points list into a list of Points messages
         msg.points_list = [Points(x=float(point[0]), y=float(point[1])) for point in self.points_list]
+
+        self.get_logger().info(f"Points List: {msg.points_list}")
         self.points_publisher.publish(msg)
 
     def find_aruco(self):
@@ -84,6 +87,7 @@ class CameraNode(Node):
     def track_person(self):
         with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5, model_complexity=1, smooth_landmarks=True) as pose:
             while self.cap.isOpened() and self.running:
+
                 ret, frame = self.cap.read()
                 
                 if not ret:
@@ -108,6 +112,7 @@ class CameraNode(Node):
                     )
 
                 cv2.imshow(f'Mediapipe Feed - {self.cam_name}', image)
+                self.publish_points_list()
 
                 if cv2.waitKey(10) & 0xFF == ord('q'):
                     self.running = False
