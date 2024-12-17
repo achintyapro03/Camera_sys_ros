@@ -1,0 +1,8 @@
+[0.000000] (-) TimerEvent: {}
+[0.000242] (-) JobUnselected: {'identifier': 'camera_cpp_pkg'}
+[0.000411] (-) JobUnselected: {'identifier': 'camera_interface_pkg'}
+[0.000425] (-) JobUnselected: {'identifier': 'camera_main_pkg'}
+[0.000444] (camera_bringup_pkg) JobQueued: {'identifier': 'camera_bringup_pkg', 'dependencies': OrderedDict([('camera_cpp_pkg', '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg')])}
+[0.000655] (camera_bringup_pkg) JobStarted: {'identifier': 'camera_bringup_pkg'}
+[0.009312] (camera_bringup_pkg) JobEnded: {'identifier': 'camera_bringup_pkg', 'rc': 1}
+[0.019571] (-) EventReactorShutdown: {}

@@ -19,7 +19,7 @@ def generate_launch_description():
 
     # Launch the first camera node (video_processor) with camera_id = 1, camera_name = 'camera_1'
     ld.add_action(Node(
-        package='camera_py_pkg',
+        package='camera_main_pkg',
         executable='video_processor',
         name='video_processor_node_1',
         output='screen',
