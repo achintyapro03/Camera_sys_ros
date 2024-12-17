@@ -14,7 +14,7 @@ class CameraNode(Node):
         # Declare and get parameters
         self.declare_parameter('camera_id', 0)
         self.declare_parameter('camera_name', 'camera')
-        self.declare_parameter('starting_mode', 1)
+        self.declare_parameter('starting_mode', 3)
 
         self.cam_id = self.get_parameter('camera_id').get_parameter_value().integer_value
         self.cam_name = self.get_parameter('camera_name').get_parameter_value().string_value
@@ -38,7 +38,7 @@ class CameraNode(Node):
         # Convert the points list into a list of Points messages
         msg.points_list = [Points(x=float(point[0]), y=float(point[1])) for point in self.points_list]
 
-        self.get_logger().info(f"Points List: {msg.points_list}")
+        # self.get_logger().info(f"Points List: {msg.points_list}")
         self.points_publisher.publish(msg)
 
     def find_aruco(self):
