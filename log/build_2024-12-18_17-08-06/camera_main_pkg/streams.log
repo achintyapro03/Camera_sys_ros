@@ -1,0 +1,26 @@
+[0.742s] Invoking command in '/home/achintya/Software/ROSPlayground/camera_ws_main/src/camera_main_pkg': PYTHONPATH=/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/camera_main_pkg build --build-base /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/build install --record /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/install.log --single-version-externally-managed install_data
+[1.014s] running egg_info
+[1.015s] writing ../../build/camera_main_pkg/camera_main_pkg.egg-info/PKG-INFO
+[1.015s] writing dependency_links to ../../build/camera_main_pkg/camera_main_pkg.egg-info/dependency_links.txt
+[1.015s] writing entry points to ../../build/camera_main_pkg/camera_main_pkg.egg-info/entry_points.txt
+[1.015s] writing requirements to ../../build/camera_main_pkg/camera_main_pkg.egg-info/requires.txt
+[1.015s] writing top-level names to ../../build/camera_main_pkg/camera_main_pkg.egg-info/top_level.txt
+[1.017s] reading manifest file '../../build/camera_main_pkg/camera_main_pkg.egg-info/SOURCES.txt'
+[1.018s] writing manifest file '../../build/camera_main_pkg/camera_main_pkg.egg-info/SOURCES.txt'
+[1.018s] running build
+[1.018s] running build_py
+[1.018s] copying camera_main_pkg/point_processor.py -> /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/build/lib/camera_main_pkg
+[1.018s] running install
+[1.019s] running install_lib
+[1.019s] copying /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/build/lib/camera_main_pkg/point_processor.py -> /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/python3.10/site-packages/camera_main_pkg
+[1.020s] byte-compiling /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/python3.10/site-packages/camera_main_pkg/point_processor.py to point_processor.cpython-310.pyc
+[1.022s] running install_data
+[1.022s] running install_egg_info
+[1.023s] removing '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/python3.10/site-packages/camera_main_pkg-0.1.0-py3.10.egg-info' (and everything under it)
+[1.024s] Copying ../../build/camera_main_pkg/camera_main_pkg.egg-info to /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/python3.10/site-packages/camera_main_pkg-0.1.0-py3.10.egg-info
+[1.024s] running install_scripts
+[1.042s] Installing point_processor script to /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/camera_main_pkg
+[1.042s] Installing tf_test script to /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/camera_main_pkg
+[1.042s] Installing video_processor script to /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/camera_main_pkg
+[1.042s] writing list of installed files to '/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/install.log'
+[1.063s] Invoked command in '/home/achintya/Software/ROSPlayground/camera_ws_main/src/camera_main_pkg' returned '0': PYTHONPATH=/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/camera_main_pkg build --build-base /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/build install --record /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/install.log --single-version-externally-managed install_data

@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            # 'camera_node = camera_main_pkg.camera_node:main',
+            'tf_test = camera_main_pkg.tf_test:main',
             'video_processor = camera_main_pkg.video_processor:main',
             'point_processor = camera_main_pkg.point_processor:main',
         ],

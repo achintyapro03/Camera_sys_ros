@@ -32,4 +32,22 @@ def generate_launch_description():
         ],
     ))
 
+    ld.add_action(Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        name='robot_state_publisher',
+        output='screen',
+        parameters=[],
+        arguments=['/home/achintya/Software/ROSPlayground/camera_ws_main/camera.urdf']
+    ))
+
+    ld.add_action(Node(
+        package='rviz2',
+        executable='rviz2',
+        name='rviz2',
+        output='screen',
+        parameters=[],
+        arguments=['-d', '/home/achintya/Software/ROSPlayground/camera_ws_main/camera_config.rviz']
+    ))
+
     return ld

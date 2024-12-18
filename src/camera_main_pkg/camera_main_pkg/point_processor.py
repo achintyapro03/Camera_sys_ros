@@ -4,21 +4,28 @@ from camera_interface_pkg.msg import PointsList, Points
 import serial
 import time
 import numpy as np
+from std_msgs.msg import Float32MultiArray
+from sensor_msgs.msg import JointState
+import random
+import math 
+
+import numpy as np
 
 class CameraState():
     def __init__(self, d, camera_stalk_height, platform_height, foot_to_camera_base, xpos):
         self.angles = [0, 0, 0]  # yaw, pitch, roll (in degrees)
         self.offset = [0, 0, 0]  # constant angle offsets (in radians)
+        self.radians = [0, 0, 0]  # store the angles in radians
         self.calibrated = False
         self.points_list = []
-        self.R = []
-        self.t = []
+        self.R = np.eye(3)  # Identity matrix for initial rotation
+        self.t = np.zeros(3)  # Zero translation vector
         self.xpos = xpos
         self.d = d
         self.camera_stalk_height = camera_stalk_height
         self.platform_height = platform_height
         self.foot_to_camera_base = foot_to_camera_base
-        self.frame_shape = (1280, 640) # X, Y
+        self.frame_shape = (1280, 640)  # X, Y
     
     def update(self, yaw=None, pitch=None, roll=None):
         if yaw is not None:
@@ -28,20 +35,17 @@ class CameraState():
         if roll is not None:
             self.angles[2] = roll  # Update roll (in degrees)
         
-        # Convert angles from degrees to radians
-        yaw_rad = np.radians(self.angles[0])
-        pitch_rad = np.radians(self.angles[1])
-        roll_rad = np.radians(self.angles[2])
+        # Convert angles from degrees to radians and store in self.radians
+        self.radians[0] = np.radians(self.angles[0] + self.offset[0])  # yaw
+        self.radians[1] = np.radians(self.angles[1] + self.offset[1])  # pitch
+        self.radians[2] = np.radians(self.angles[2] + self.offset[2])  # roll
 
         # Apply the rotation matrix and translation updates
-        self.R = self.rotation_matrix(yaw_rad, pitch_rad, roll_rad)
-        self.t = self.translation_vector(roll_rad)
+        self.R = self.rotation_matrix(self.radians[0], self.radians[1], self.radians[2])
+        self.t = self.translation_vector(self.radians[2])  # Only roll affects translation in this case
 
     def rotation_matrix(self, yaw, pitch, roll):
-        yaw += self.offset[0]
-        pitch += self.offset[1]
-        roll += self.offset[2]
-        
+        # Standard rotation matrices for yaw, pitch, and roll
         Rz = np.array([[np.cos(yaw), -np.sin(yaw), 0],
                        [np.sin(yaw), np.cos(yaw), 0],
                        [0, 0, 1]])
@@ -54,13 +58,15 @@ class CameraState():
                        [0, np.cos(roll), -np.sin(roll)],
                        [0, np.sin(roll), np.cos(roll)]])
 
+        # Combine the rotation matrices
         R = np.dot(Rz, np.dot(Ry, Rx))
 
         return R
 
     def translation_vector(self, roll):
+        # Translation depends on the position and platform height
         t = np.array([
-            self.xpos * self.d / 2,
+            self.xpos * self.d / 2,  # Horizontal displacement based on xpos and d
             self.platform_height + self.foot_to_camera_base + self.camera_stalk_height * np.cos(roll),
             self.camera_stalk_height * np.sin(roll)
         ])
@@ -95,13 +101,35 @@ class ProcessorNode(Node):
         self.coordinates = np.zeros((100, 3))
         self.received_data = None
         self.mode = 0
+
+        self.joint_state_publisher_ = self.create_publisher(JointState, '/joint_states', 10)
+        self.timer1 = self.create_timer(0.1, self.publish_joint_states)
+
+        # Initialize joint state message
+        self.pitch_inclination = 0
+
+        self.joint_state = JointState()
+        self.joint_state.name = ['pitch_inclination', 'cam_left_yaw', 'cam_right_yaw']
+        self.joint_state.position = [0.0, 0.0, 0.0]  # Initial positions
         # Subscribers
         self.create_subscription(PointsList, 'cam_left/points_list', self.points_left_callback, 10)
         self.create_subscription(PointsList, 'cam_right/points_list', self.points_right_callback, 10)
 
         # Timer for sending data to arduino
-        self.timer1 = self.create_timer(send_interval, self.write_to_stream)
-        self.timer2 = self.create_timer(rcv_interval, self.run)
+        self.timer2 = self.create_timer(send_interval, self.write_to_stream)
+        self.timer3 = self.create_timer(rcv_interval, self.run)
+
+    def publish_joint_states(self):
+        # Generate random values within joint limits
+        self.joint_state.position = [
+            self.pitch_inclination,
+            self.cam_left.radians[0],
+            self.cam_right.radians[0]
+        ]
+        self.joint_state.header.stamp = self.get_clock().now().to_msg()
+        self.joint_state_publisher_.publish(self.joint_state)
+        self.get_logger().info(f"Publishing: {self.joint_state.position}")
+
 
     def points_left_callback(self, msg):
         self.cam_left.points_list = msg.points_list
@@ -130,16 +158,22 @@ class ProcessorNode(Node):
                     pass
             return None
         
-        except:
-            pass
+        except: 
+            return [
+                        random.uniform(-math.pi, math.pi) * 180 / math.pi,  
+                        random.uniform(-math.pi, math.pi) * 180 / math.pi,  
+                        random.uniform(-math.pi, math.pi) * 180 / math.pi,  
+                    ] 
+
         
     def run(self):
         self.received_data = self.read_from_stream()
 
         try:
             if self.received_data:
-                self.cam_left.update(yaw=self.received_data[1], pitch=self.received_data[0], roll=0)
-                self.cam_right.update(yaw=self.received_data[2], pitch=self.received_data[0], roll=0)
+                self.pitch_inclination = self.received_data[0] * math.pi / 180
+                self.cam_left.update(yaw=self.received_data[1], pitch=0, roll=0)
+                self.cam_right.update(yaw=self.received_data[2], pitch=0, roll=0)
 
         except Exception as e: 
             self.get_logger().error("read exception : " + str(e))
