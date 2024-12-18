@@ -11,11 +11,30 @@ import math
 from tf2_ros import Buffer, TransformListener
 from tf2_ros import LookupException, ConnectivityException, ExtrapolationException
 import tf_transformations
+from scipy import linalg
 
-import numpy as np
+
+camera_width = 1280.0
+camera_height = 960.0
+fx = 1430.0
+fy = 1430.0
+cx = 480.0
+cy = 620.0
+
+K = np.array([
+    [fx, 0, cx],
+    [0, fy, cy],
+    [0, 0, 1]
+], dtype=float)
+
+dist = np.array([0, 0, 0, 0, 0], dtype=float)
+
+mp_keypoints = [0, 11, 12, 13, 14, 15, 16]
+
 
 class CameraState():
-    def __init__(self, d, camera_stalk_height, platform_height, foot_to_camera_base, xpos):
+    def __init__(self, cam_name):
+        self.cam_name = cam_name
         self.angles = [0, 0, 0]  # yaw, pitch, roll (in degrees)
         self.offset = [0, 0, 0]  # constant angle offsets (in radians)
         self.radians = [0, 0, 0]  # store the angles in radians
@@ -24,11 +43,6 @@ class CameraState():
         self.R = np.eye(3)  # Identity matrix for initial rotation
         self.t = np.zeros(3)  # Zero translation vector
         self.M = np.eye(4) # Identity matrix
-        self.xpos = xpos
-        self.d = d
-        self.camera_stalk_height = camera_stalk_height
-        self.platform_height = platform_height
-        self.foot_to_camera_base = foot_to_camera_base
         self.frame_shape = (1280, 640)  # X, Y
     
     def update(self, yaw=None, pitch=None, roll=None):
@@ -68,22 +82,23 @@ class InterpolatorNode(Node):
             self.get_logger().error(f"Failed to open serial port: {e}")
             # raise
 
-        self.cam_left = CameraState(d, camera_stalk_height, platform_height, foot_to_camera_base, -1)
-        self.cam_right = CameraState(d, camera_stalk_height, platform_height, foot_to_camera_base, 1)
+        self.cam_left = CameraState(cam_name="cam_left")
+        self.cam_right = CameraState(cam_name="cam_right")
         
         self.coordinates = np.zeros((100, 3))
         self.received_data = None
         self.mode = 0
         self.temp = [0.0, 0.0, 0.0]
+
         self.joint_state_publisher_ = self.create_publisher(JointState, '/joint_states', 10)
         self.joint_state_timer = self.create_timer(0.1, self.publish_joint_states)
+        self.joint_state = JointState()
+        self.joint_state.name = ['pitch_inclination', 'cam_left_yaw', 'cam_right_yaw']
+        self.joint_state.position = [0.0, 0.0, 0.0]  # Initial positions
 
         # Initialize joint state message
         self.pitch_inclination = 0
 
-        self.joint_state = JointState()
-        self.joint_state.name = ['pitch_inclination', 'cam_left_yaw', 'cam_right_yaw']
-        self.joint_state.position = [0.0, 0.0, 0.0]  # Initial positions
         # Subscribers
         self.create_subscription(PointsList, 'cam_left/points_list', self.points_left_callback, 10)
         self.create_subscription(PointsList, 'cam_right/points_list', self.points_right_callback, 10)
@@ -123,10 +138,30 @@ class InterpolatorNode(Node):
         rotation_matrix_3x3 = rotation_matrix[:3, :3]
 
         return transform_matrix, rotation_matrix_3x3, translation
-        
 
     def temp_callback(self, msg):
         self.temp = msg.data
+
+    def DLT(self, point_left, point_right):
+        P_left = K @ self.cam_left.M[:3,:]
+        P_right = K @ self.cam_right.M[:3,:]
+
+        A = [point_left[1]*P_left[2,:] - P_left[1,:],
+         P_left[0,:] - point_left[0]*P_left[2,:],
+         point_right[1]*P_right[2,:] - P_right[1,:],
+         P_right[0,:] - point_right[0]*P_right[2,:]
+        ]
+        A = np.array(A).reshape((4,4))
+        #print('A: ')
+        #print(A)
+
+        B = A.transpose() @ A
+        U, s, Vh = linalg.svd(B, full_matrices = False)
+
+        #print('Triangulated point: ')
+        #print(Vh[3,0:3]/Vh[3,3])
+        return Vh[3,0:3]/Vh[3,3]
+
 
     def publish_joint_states(self):
         # Generate random values within joint limits
@@ -182,12 +217,6 @@ class InterpolatorNode(Node):
 
         except Exception as e: 
             self.get_logger().error("read exception : " + str(e))
-    
-
-d = 0.1625
-platform_height = 0
-foot_to_camera_base = 0.16
-camera_stalk_height = 0.04
 
 def main(args=None):
     rclpy.init(args=args)
