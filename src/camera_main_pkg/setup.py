@@ -21,9 +21,9 @@ setup(
     entry_points={
         'console_scripts': [
             'tf_test = camera_main_pkg.tf_test:main',
-            'custom_tf = camera_main_pkg.custom_tf:main',
             'video_processor = camera_main_pkg.video_processor:main',
-            'interpolator = camera_main_pkg.interpolator:main'
+            'interpolator = camera_main_pkg.interpolator:main',
+            'controller = camera_main_pkg.controller:main'
         ],
     },
 )

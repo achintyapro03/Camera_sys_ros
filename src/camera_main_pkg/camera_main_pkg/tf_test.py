@@ -1,41 +1,77 @@
 import rclpy
 from rclpy.node import Node
-from sensor_msgs.msg import JointState
-import random
-import math
+from tf2_ros import Buffer, TransformListener
+from tf2_ros import LookupException, ConnectivityException, ExtrapolationException
+import tf_transformations  # For quaternion to RPY conversion
+import numpy as np  # For matrix manipulation
 
-class JointStatePublisher(Node):
+class TFListener(Node):
     def __init__(self):
-        super().__init__('joint_state_publisher')
-        self.joint_state_publisher_ = self.create_publisher(JointState, '/joint_states', 10)
-        self.timer = self.create_timer(0.1, self.publish_joint_states)
+        super().__init__('tf_listener')
+        
+        # Create a Buffer and TransformListener
+        self.tf_buffer = Buffer()
+        self.tf_listener = TransformListener(self.tf_buffer, self)
+        
+        # Timer to periodically fetch transforms
+        self.timer = self.create_timer(1.0, self.get_transforms)
 
-        # Initialize joint state message
-        self.joint_state = JointState()
-        self.joint_state.name = ['pitch_inclination', 'cam_left_yaw', 'cam_right_yaw']
-        self.joint_state.position = [0.0, 0.0, 0.0]  # Initial positions
+    def get_transforms(self):
+        try:
+            # Get the transform from base_link to cam_left
+            transform_cam_left = self.tf_buffer.lookup_transform(
+                'cam_left', 'base_link', rclpy.time.Time())
+            
+            # Extract quaternion and translation from the transform
+            quat_left = transform_cam_left.transform.rotation
+            translation_left = transform_cam_left.transform.translation
 
-    def publish_joint_states(self):
-        # Generate random values within joint limits
-        self.joint_state.position = [
-            random.uniform(-math.pi, math.pi),  # pitch_inclination
-            random.uniform(-math.pi, math.pi),  # cam_left_yaw
-            random.uniform(-math.pi, math.pi)   # cam_right_yaw
-        ]
-        self.joint_state.header.stamp = self.get_clock().now().to_msg()
-        self.joint_state_publisher_.publish(self.joint_state)
-        self.get_logger().info(f"Publishing: {self.joint_state.position}")
+            # Convert quaternion to RPY (roll, pitch, yaw)
+            rpy_left = tf_transformations.euler_from_quaternion(
+                [quat_left.x, quat_left.y, quat_left.z, quat_left.w])
+            
+            # Convert RPY to degrees
+            rpy_left_deg = [round(np.degrees(angle), 3) for angle in rpy_left]
+
+            # Create the transformation matrix (4x4)
+            transform_matrix_left = self.create_transform_matrix(translation_left, quat_left)
+
+            # Print the formatted output
+            self.get_logger().info(f"Translation: [{translation_left.x:.3f}, {translation_left.y:.3f}, {translation_left.z:.3f}]")
+            self.get_logger().info(f"Rotation: in Quaternion [{quat_left.x:.3f}, {quat_left.y:.3f}, {quat_left.z:.3f}, {quat_left.w:.3f}]")
+            self.get_logger().info(f"Rotation: in RPY (radian) [{rpy_left[0]:.3f}, {rpy_left[1]:.3f}, {rpy_left[2]:.3f}]")
+            self.get_logger().info(f"Rotation: in RPY (degree) [{rpy_left_deg[0]:.3f}, {rpy_left_deg[1]:.3f}, {rpy_left_deg[2]:.3f}]")
+            self.get_logger().info(f"Matrix:\n{np.array2string(transform_matrix_left, precision=3, suppress_small=True)}")
+
+        except (LookupException, ConnectivityException, ExtrapolationException) as e:
+            self.get_logger().error(f"Failed to get transform: {e}")
+
+    def create_transform_matrix(self, translation, quaternion):
+        """
+        Convert translation and quaternion into a 4x4 transformation matrix.
+        """
+        # Convert quaternion to rotation matrix
+        rotation_matrix = tf_transformations.quaternion_matrix([quaternion.x, quaternion.y, quaternion.z, quaternion.w])
+
+        # Insert translation into the matrix
+        transform_matrix = rotation_matrix
+        transform_matrix[0][3] = translation.x
+        transform_matrix[1][3] = translation.y
+        transform_matrix[2][3] = translation.z
+
+        return transform_matrix
 
 def main(args=None):
     rclpy.init(args=args)
-    node = JointStatePublisher()
+    node = TFListener()
+    
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:
         pass
-    finally:
-        node.destroy_node()
-        rclpy.shutdown()
+    
+    node.destroy_node()
+    rclpy.shutdown()
 
 if __name__ == '__main__':
     main()

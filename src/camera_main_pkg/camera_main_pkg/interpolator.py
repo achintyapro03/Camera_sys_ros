@@ -8,6 +8,9 @@ from std_msgs.msg import Float32MultiArray
 from sensor_msgs.msg import JointState
 import random
 import math 
+from tf2_ros import Buffer, TransformListener
+from tf2_ros import LookupException, ConnectivityException, ExtrapolationException
+import tf_transformations
 
 import numpy as np
 
@@ -20,6 +23,7 @@ class CameraState():
         self.points_list = []
         self.R = np.eye(3)  # Identity matrix for initial rotation
         self.t = np.zeros(3)  # Zero translation vector
+        self.M = np.eye(4) # Identity matrix
         self.xpos = xpos
         self.d = d
         self.camera_stalk_height = camera_stalk_height
@@ -40,37 +44,6 @@ class CameraState():
         self.radians[1] = np.radians(self.angles[1] + self.offset[1])  # pitch
         self.radians[2] = np.radians(self.angles[2] + self.offset[2])  # roll
 
-        # Apply the rotation matrix and translation updates
-        self.R = self.rotation_matrix(self.radians[0], self.radians[1], self.radians[2])
-        self.t = self.translation_vector(self.radians[2])  # Only roll affects translation in this case
-
-    def rotation_matrix(self, yaw, pitch, roll):
-        # Standard rotation matrices for yaw, pitch, and roll
-        Rz = np.array([[np.cos(yaw), -np.sin(yaw), 0],
-                       [np.sin(yaw), np.cos(yaw), 0],
-                       [0, 0, 1]])
-
-        Ry = np.array([[np.cos(pitch), 0, np.sin(pitch)],
-                       [0, 1, 0],
-                       [-np.sin(pitch), 0, np.cos(pitch)]])
-
-        Rx = np.array([[1, 0, 0],
-                       [0, np.cos(roll), -np.sin(roll)],
-                       [0, np.sin(roll), np.cos(roll)]])
-
-        # Combine the rotation matrices
-        R = np.dot(Rz, np.dot(Ry, Rx))
-
-        return R
-
-    def translation_vector(self, roll):
-        # Translation depends on the position and platform height
-        t = np.array([
-            self.xpos * self.d / 2,  # Horizontal displacement based on xpos and d
-            self.platform_height + self.foot_to_camera_base + self.camera_stalk_height * np.cos(roll),
-            self.camera_stalk_height * np.sin(roll)
-        ])
-        return t
 
 class InterpolatorNode(Node):
     def __init__(self):
@@ -101,9 +74,9 @@ class InterpolatorNode(Node):
         self.coordinates = np.zeros((100, 3))
         self.received_data = None
         self.mode = 0
-
+        self.temp = [0.0, 0.0, 0.0]
         self.joint_state_publisher_ = self.create_publisher(JointState, '/joint_states', 10)
-        self.timer1 = self.create_timer(0.1, self.publish_joint_states)
+        self.joint_state_timer = self.create_timer(0.1, self.publish_joint_states)
 
         # Initialize joint state message
         self.pitch_inclination = 0
@@ -116,8 +89,44 @@ class InterpolatorNode(Node):
         self.create_subscription(PointsList, 'cam_right/points_list', self.points_right_callback, 10)
 
         # Timer for sending data to arduino
-        self.timer2 = self.create_timer(send_interval, self.write_to_stream)
-        self.timer3 = self.create_timer(rcv_interval, self.run)
+        self.send_timer = self.create_timer(send_interval, self.write_to_stream)
+        self.rcv_timer = self.create_timer(rcv_interval, self.run)
+
+        self.create_subscription(Float32MultiArray, '/robot_angles', self.temp_callback, 10)
+
+        self.tf_buffer = Buffer()
+        self.tf_listener = TransformListener(self.tf_buffer, self)
+        self.transform_timer = self.create_timer(0.05, self.get_transforms)
+
+
+    def get_transforms(self):
+        try:
+            self.cam_left.M, self.cam_left.R, self.cam_left.t = self.process_transform('cam_left')
+            self.cam_right.M, self.cam_right.R, self.cam_right.t = self.process_transform('cam_right')
+
+        except (LookupException, ConnectivityException, ExtrapolationException) as e:
+            self.get_logger().error(f"Failed to get transform: {e}")
+
+
+    def process_transform(self, cam_name):
+        transform = self.tf_buffer.lookup_transform(cam_name, 'base_link', rclpy.time.Time())
+        quat = transform.transform.rotation
+        translation = transform.transform.translation
+
+        rotation_matrix = tf_transformations.quaternion_matrix([quat.x, quat.y, quat.z, quat.w])
+
+        transform_matrix = rotation_matrix
+        transform_matrix[0][3] = translation.x
+        transform_matrix[1][3] = translation.y
+        transform_matrix[2][3] = translation.z
+
+        rotation_matrix_3x3 = rotation_matrix[:3, :3]
+
+        return transform_matrix, rotation_matrix_3x3, translation
+        
+
+    def temp_callback(self, msg):
+        self.temp = msg.data
 
     def publish_joint_states(self):
         # Generate random values within joint limits
@@ -128,12 +137,12 @@ class InterpolatorNode(Node):
         ]
         self.joint_state.header.stamp = self.get_clock().now().to_msg()
         self.joint_state_publisher_.publish(self.joint_state)
-        self.get_logger().info(f"Publishing points: {self.joint_state.position}")
+        # self.get_logger().info(f"Publishing points: {self.joint_state.position}")
 
 
     def points_left_callback(self, msg):
         self.cam_left.points_list = msg.points_list
-        self.get_logger().info(f"x: {self.cam_left.points_list[0].x}, y: {self.cam_left.points_list[0].y}")
+        # self.get_logger().info(f"x: {self.cam_left.points_list[0].x}, y: {self.cam_left.points_list[0].y}")
 
     def points_right_callback(self, msg):
         self.cam_right.points_list = msg.points_list
@@ -159,13 +168,7 @@ class InterpolatorNode(Node):
             return None
         
         except: 
-            # return [
-            #             random.uniform(-math.pi, math.pi) * 180 / math.pi,  
-            #             random.uniform(-math.pi, math.pi) * 180 / math.pi,  
-            #             random.uniform(-math.pi, math.pi) * 180 / math.pi,  
-            #         ] 
-
-            return [45.0, 90.0, 30.0]
+            return self.temp
 
         
     def run(self):
@@ -174,8 +177,8 @@ class InterpolatorNode(Node):
         try:
             if self.received_data:
                 self.pitch_inclination = self.received_data[0] * math.pi / 180
-                self.cam_left.update(yaw=self.received_data[1], pitch=0, roll=0)
-                self.cam_right.update(yaw=self.received_data[2], pitch=0, roll=0)
+                self.cam_left.update(yaw=self.received_data[1], pitch=self.received_data[0], roll=0)
+                self.cam_right.update(yaw=self.received_data[2], pitch=self.received_data[0], roll=0)
 
         except Exception as e: 
             self.get_logger().error("read exception : " + str(e))

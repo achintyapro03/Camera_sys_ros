@@ -1,0 +1,5 @@
+  File "/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/python3.10/site-packages/camera_main_pkg/controller.py", line 126
+    main(
+        ^
+SyntaxError: '(' was never closed
+
