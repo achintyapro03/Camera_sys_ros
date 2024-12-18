@@ -29,7 +29,7 @@ class CameraNode(Node):
 
         # Publisher for points_list
         self.points_publisher = self.create_publisher(PointsList, f'{self.cam_name}/points_list', 10)
-        self.get_logger().warning(f"node started")
+        self.get_logger().warning(f"node started_hhhoo")
 
         self.run()
 

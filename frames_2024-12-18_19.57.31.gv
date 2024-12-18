@@ -1,0 +1,9 @@
+digraph G {
+"h_rod" -> "cam_left"[label=" Broadcaster: default_authority\nAverage rate: 10.2\nBuffer length: 5.0\nMost recent transform: 1734532051.521191\nOldest transform: 1734532046.521125\n"];
+"base_link" -> "h_rod"[label=" Broadcaster: default_authority\nAverage rate: 10.2\nBuffer length: 5.0\nMost recent transform: 1734532051.521191\nOldest transform: 1734532046.521125\n"];
+"h_rod" -> "cam_right"[label=" Broadcaster: default_authority\nAverage rate: 10.2\nBuffer length: 5.0\nMost recent transform: 1734532051.521191\nOldest transform: 1734532046.521125\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1734532051.5252168"[ shape=plaintext ] ;
+}->"base_link";
+}

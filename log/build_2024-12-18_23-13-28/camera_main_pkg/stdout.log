@@ -1,0 +1,20 @@
+running develop
+running egg_info
+writing camera_main_pkg.egg-info/PKG-INFO
+writing dependency_links to camera_main_pkg.egg-info/dependency_links.txt
+writing entry points to camera_main_pkg.egg-info/entry_points.txt
+writing requirements to camera_main_pkg.egg-info/requires.txt
+writing top-level names to camera_main_pkg.egg-info/top_level.txt
+reading manifest file 'camera_main_pkg.egg-info/SOURCES.txt'
+writing manifest file 'camera_main_pkg.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/python3.10/site-packages/camera-main-pkg.egg-link (link to .)
+Installing custom_tf script to /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/camera_main_pkg
+Installing interpolator script to /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/camera_main_pkg
+Installing tf_test script to /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/camera_main_pkg
+Installing video_processor script to /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/camera_main_pkg
+
+Installed /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg
+running symlink_data
+symbolically linking /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/resource/camera_main_pkg -> /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/share/ament_index/resource_index/packages
+symbolically linking /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/package.xml -> /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/share/camera_main_pkg

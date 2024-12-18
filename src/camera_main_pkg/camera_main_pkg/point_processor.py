@@ -128,7 +128,7 @@ class ProcessorNode(Node):
         ]
         self.joint_state.header.stamp = self.get_clock().now().to_msg()
         self.joint_state_publisher_.publish(self.joint_state)
-        self.get_logger().info(f"Publishing: {self.joint_state.position}")
+        self.get_logger().info(f"Publishing gay: {self.joint_state.position}")
 
 
     def points_left_callback(self, msg):
@@ -159,11 +159,17 @@ class ProcessorNode(Node):
             return None
         
         except: 
+            # return [
+            #             random.uniform(-math.pi, math.pi) * 180 / math.pi,  
+            #             random.uniform(-math.pi, math.pi) * 180 / math.pi,  
+            #             random.uniform(-math.pi, math.pi) * 180 / math.pi,  
+            #         ] 
+
             return [
-                        random.uniform(-math.pi, math.pi) * 180 / math.pi,  
-                        random.uniform(-math.pi, math.pi) * 180 / math.pi,  
-                        random.uniform(-math.pi, math.pi) * 180 / math.pi,  
-                    ] 
+                1.45,
+                0,
+                3.14
+            ] 
 
         
     def run(self):

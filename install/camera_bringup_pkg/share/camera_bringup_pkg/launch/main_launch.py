@@ -1,6 +1,4 @@
-import launch
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument
 from launch_ros.actions import Node
 
 def generate_launch_description():
@@ -20,8 +18,8 @@ def generate_launch_description():
 
     ld.add_action(Node(
         package='camera_main_pkg',
-        executable='point_processor',
-        name='point_processor_node_1',
+        executable='interpolator',
+        name='interpolator_node_1',
         output='screen',
         parameters=[
             {'serial_port': '/dev/ttyUSB0'},
