@@ -7,13 +7,33 @@ def generate_launch_description():
     ld.add_action(Node(
         package='camera_main_pkg',
         executable='video_processor',
-        name='video_processor_node_1',
+        name='video_processor_node_left',
         output='screen',
         parameters=[
             {'camera_id': 0},
             {'camera_name': 'cam_left'},
             {'starting_mode': 3}
         ],
+    ))
+
+    # ld.add_action(Node(
+    #     package='camera_main_pkg',
+    #     executable='video_processor',
+    #     name='video_processor_node_right',
+    #     output='screen',
+    #     parameters=[
+    #         {'camera_id': 1},
+    #         {'camera_name': 'cam_right'},
+    #         {'starting_mode': 3}
+    #     ],
+    # ))
+
+    ld.add_action(Node(
+        package='camera_main_pkg',
+        executable='controller',
+        name='controller_node_1',
+        output='screen',
+        parameters=[],
     ))
 
     ld.add_action(Node(

@@ -28,6 +28,7 @@ class MainWindow(QMainWindow):
     def __init__(self, node):
         super().__init__()
         self.node = node
+        self.names = ["pitch_inclination", "cam_left", "cam_right"]
         self.initUI()
 
     def initUI(self):
@@ -45,7 +46,7 @@ class MainWindow(QMainWindow):
         for i in range(3):  # Only 3 sliders for 3 angles
             vbox = QVBoxLayout()
 
-            label = QLabel(f'Angle {i+1}')
+            label = QLabel(f'{self.names[i]}')
             label.setAlignment(Qt.AlignCenter)
             vbox.addWidget(label)
             self.slider_labels.append(label)
@@ -80,7 +81,7 @@ class MainWindow(QMainWindow):
         # When slider value changes, update angles and labels
         angles = [self.slider_to_angle(slider.value()) for slider in self.sliders]
         for i, label in enumerate(self.slider_labels):
-            label.setText(f'Angle {i+1}: {angles[i]:.2f}')
+            label.setText(f'{self.names[i]}')
             # Update the label with the current angle value over the slider
             self.angle_labels[i].setText(f'{angles[i]:.2f}')
         self.node.set_angles(angles)
