@@ -68,4 +68,13 @@ def generate_launch_description():
         arguments=['-d', '/home/achintya/Software/ROSPlayground/camera_ws_main/camera_config.rviz']
     ))
 
+
+    ld.add_action(Node(
+        package='camera_main_pkg',
+        executable='plotter',
+        name='plotter_node_1',
+        output='screen',
+        parameters=[],
+    ))
+
     return ld

@@ -103,7 +103,7 @@ class CameraNode(Node):
                     self.points_list.clear()
                     landmarks = results.pose_landmarks.landmark
                     for landmark in landmarks:
-                        self.points_list.append([int((landmark.x - 0.5) * frame.shape[1]), int((landmark.y - 0.2) * frame.shape[0])])
+                        self.points_list.append([int(landmark.x * frame.shape[1]), int(landmark.y * frame.shape[0])])
 
                     mp_drawing.draw_landmarks(
                         image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,

@@ -1,3 +1,7 @@
+msg/Coordinates.idl
+msg/Coordinates.msg
+msg/CoordinatesList.idl
+msg/CoordinatesList.msg
 msg/Points.idl
 msg/Points.msg
 msg/PointsList.idl

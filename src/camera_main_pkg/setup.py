@@ -23,7 +23,8 @@ setup(
             'tf_test = camera_main_pkg.tf_test:main',
             'video_processor = camera_main_pkg.video_processor:main',
             'interpolator = camera_main_pkg.interpolator:main',
-            'controller = camera_main_pkg.controller:main'
+            'controller = camera_main_pkg.controller:main',
+            'plotter = camera_main_pkg.plotter:main'
         ],
     },
 )

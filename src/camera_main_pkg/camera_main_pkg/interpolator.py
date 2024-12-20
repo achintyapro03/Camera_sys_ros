@@ -1,6 +1,6 @@
 import rclpy
 from rclpy.node import Node
-from camera_interface_pkg.msg import PointsList, Points
+from camera_interface_pkg.msg import PointsList, Points, Coordinates, CoordinatesList
 import serial
 import time
 import numpy as np
@@ -20,6 +20,9 @@ fx = 1430.0
 fy = 1430.0
 cx = 480.0
 cy = 620.0
+
+frame_shape_x = 1280
+frame_shape_y = 960
 
 K = np.array([
     [fx, 0, cx],
@@ -95,6 +98,8 @@ class InterpolatorNode(Node):
         self.joint_state = JointState()
         self.joint_state.name = ['pitch_inclination', 'cam_left_yaw', 'cam_right_yaw']
         self.joint_state.position = [0.0, 0.0, 0.0]  # Initial positions
+
+        self.coordinates_publisher = self.create_publisher(CoordinatesList, '/coordinates_list', 10)
 
         # Initialize joint state message
         self.pitch_inclination = 0
@@ -185,7 +190,13 @@ class InterpolatorNode(Node):
     def write_to_stream(self):
         try:
             if self.cam_left.points_list and self.cam_right.points_list:
-                data = f"{(self.cam_right.points_list[0].y + self.cam_left.points_list[0].y)//2},{self.cam_left.points_list[0].x},{self.cam_right.points_list[0].x},{self.mode}\n"
+                l = self.cam_left.points_list[0]
+                r = self.cam_right.points_list[0]
+                l.x = l.x - 0.5 * frame_shape_x
+                r.x = r.x - 0.5 * frame_shape_x
+                l.y = l.y - 0.2 * frame_shape_y 
+                r.y = r.y - 0.2 * frame_shape_y 
+                data = f"{(r.y + l.y)//2},{l.x},{r.x},{self.mode}\n"
                 self.ser.write(data.encode())
         except:
             pass
@@ -217,6 +228,26 @@ class InterpolatorNode(Node):
 
         except Exception as e: 
             self.get_logger().error("read exception : " + str(e))
+
+        self.get_logger().info(f"{self.cam_left.points_list}, {self.cam_right.points_list}")
+
+        if(self.cam_left.calibrated and self.cam_right.calibrated):
+            if(self.cam_left.points_list and self.cam_right.points_list):
+                msg = CoordinatesList()
+                for i, (point_left, point_right) in enumerate(zip(self.cam_left.points_list, self.cam_right.points_list)):
+                    if i in mp_keypoints:
+                        coordinates = self.DLT(point_left, point_right)
+                        temp = Coordinates()    
+                        temp.node_id = i
+                        temp.x = coordinates[0]
+                        temp.y = coordinates[1]
+                        temp.z = coordinates[2]
+                        msg.coordinates_list.append(temp)
+                        if(i == 0):
+                            self.get_logger().info(f"{point_left}, {point_right}")
+                if(len(msg.coordinates_list)):
+                    self.coordinates_publisher.publish(msg)
+
 
 def main(args=None):
     rclpy.init(args=args)

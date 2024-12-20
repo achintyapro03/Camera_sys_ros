@@ -18,6 +18,8 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/RobotState.msg"
   "msg/Points.msg"
   "msg/PointsList.msg"
+  "msg/Coordinates.msg"
+  "msg/CoordinatesList.msg"
   "srv/UpdateN20SetPoints.srv"
   "srv/SetCalibration.srv"
 )
