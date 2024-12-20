@@ -1,6 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from camera_interface_pkg.msg import PointsList, Points, Coordinates, CoordinatesList
+from camera_interface_pkg.srv import SetCalibration
 import serial
 import time
 import numpy as np
@@ -87,6 +88,9 @@ class InterpolatorNode(Node):
 
         self.cam_left = CameraState(cam_name="cam_left")
         self.cam_right = CameraState(cam_name="cam_right")
+
+        self.srv_left = self.create_service(SetCalibration, 'cam_left/set_calibration', self.set_calibration_left_callback)
+        self.srv_right = self.create_service(SetCalibration, 'cam_right/set_calibration', self.set_calibration_right_callback)
         
         self.coordinates = np.zeros((100, 3))
         self.received_data = None
@@ -117,6 +121,18 @@ class InterpolatorNode(Node):
         self.tf_buffer = Buffer()
         self.tf_listener = TransformListener(self.tf_buffer, self)
         self.transform_timer = self.create_timer(0.05, self.get_transforms)
+
+    def set_calibration_left_callback(self, request, response):
+        self.cam_left.calibrated = request.calibrated
+
+        response.success = True
+        return response
+
+    def set_calibration_right_callback(self, request, response):
+        self.cam_right.calibrated = request.calibrated
+        
+        response.success = True
+        return response
 
 
     def get_transforms(self):

@@ -1,6 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from camera_interface_pkg.msg import PointsList, Points
+from camera_interface_pkg.srv import SetCalibration
 import cv2
 from cv2 import aruco
 import mediapipe as mp
@@ -27,11 +28,27 @@ class CameraNode(Node):
 
         self.running = True
 
+        self.client = self.create_client(SetCalibration, f'{self.cam_name}/set_calibration')
+        self.request = SetCalibration.Request()
+
         # Publisher for points_list
         self.points_publisher = self.create_publisher(PointsList, f'{self.cam_name}/points_list', 10)
         self.get_logger().warning(f"node started_hhhoo")
-
         self.run()
+
+    def call_calibration_service(self, calibrated):
+        self.request.calibrated = calibrated
+        future = self.client.call_async(self.request)
+
+        # Callback to handle the response
+        future.add_done_callback(self.callback)
+
+    def callback(self, future):
+        try:
+            response = future.result()
+            self.get_logger().info(f'Service response: success={response.success}')
+        except Exception as e:
+            self.get_logger().error(f'Service call failed: {e}')
 
     def publish_points_list(self):
         msg = PointsList()
@@ -66,6 +83,7 @@ class CameraNode(Node):
                         x_diff = int(center_x - frame.shape[1] / 2.0)
                         if abs(x_diff) == 0:
                             self.calibrated = True  # Set the camera as calibrated if condition met
+                            self.call_calibration_service(True)
                         self.points_list.append([x_diff, 0])
                         break
                 if(not flag):
