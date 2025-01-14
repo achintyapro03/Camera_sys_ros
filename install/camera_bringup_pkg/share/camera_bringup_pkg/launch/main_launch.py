@@ -56,7 +56,7 @@ def generate_launch_description():
         name='robot_state_publisher',
         output='screen',
         parameters=[],
-        arguments=['/home/achintya/Software/ROSPlayground/camera_ws_main/camera.urdf']
+        arguments=['/home/achintya/Software/ROSPlayground/camera_ws_main/assets/camera.urdf']
     ))
 
     ld.add_action(Node(
@@ -65,7 +65,7 @@ def generate_launch_description():
         name='rviz2',
         output='screen',
         parameters=[],
-        arguments=['-d', '/home/achintya/Software/ROSPlayground/camera_ws_main/camera_config.rviz']
+        arguments=['-d', '/home/achintya/Software/ROSPlayground/camera_ws_main/assets/camera_config.rviz']
     ))
 
 
