@@ -10,23 +10,23 @@ def generate_launch_description():
         name='video_processor_node_left',
         output='screen',
         parameters=[
-            {'camera_id': 0},
+            {'camera_id': 2},
             {'camera_name': 'cam_left'},
             {'starting_mode': 3}
         ],
     ))
 
-    # ld.add_action(Node(
-    #     package='camera_main_pkg',
-    #     executable='video_processor',
-    #     name='video_processor_node_right',
-    #     output='screen',
-    #     parameters=[
-    #         {'camera_id': 1},
-    #         {'camera_name': 'cam_right'},
-    #         {'starting_mode': 3}
-    #     ],
-    # ))
+    ld.add_action(Node(
+        package='camera_main_pkg',
+        executable='video_processor',
+        name='video_processor_node_right',
+        output='screen',
+        parameters=[
+            {'camera_id': 4},
+            {'camera_name': 'cam_right'},
+            {'starting_mode': 3}
+        ],
+    ))
 
     ld.add_action(Node(
         package='camera_main_pkg',
@@ -42,8 +42,8 @@ def generate_launch_description():
         name='interpolator_node_1',
         output='screen',
         parameters=[
-            {'serial_port': '/dev/ttyUSB0'},
-            {'baud_rate': 9600},
+            {'serial_port': '/dev/ttyACM0'},
+            {'baud_rate': 115200},
             {'send_interval': 0.05},
             {'rcv_interval': 0.05},
             {'starting_mode': 1}

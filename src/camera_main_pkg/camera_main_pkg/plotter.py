@@ -6,7 +6,8 @@ from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.animation import FuncAnimation
 import threading
 
-edge_list = [[0, 1], [0, 3]]
+edge_list = [[0, 11], [0, 12], [11, 12], [11, 13], [12, 14], [13, 15], [14, 16]]
+# [0, 11, 12, 13, 14, 15, 16]
 
 class PlotterNode(Node):
     def __init__(self):
@@ -21,6 +22,8 @@ class PlotterNode(Node):
 
     def listener_callback(self, msg):
         self.coordinates = msg.coordinates_list
+        # self.get_logger().info(self.coordinates)
+
 
 
 def plot_coordinates(node):
@@ -34,11 +37,17 @@ def plot_coordinates(node):
         ax.set_ylabel('Y')
         ax.set_zlabel('Z')
 
+        ax.set_xlim([-2, 2])
+        ax.set_ylim([-2, 2])
+        ax.set_zlim([-2, 2])
+
         x_vals = []
         y_vals = []
         z_vals = []
         id_map = {}
 
+        # print(node.coordinates)
+        
         # Map node IDs to their coordinates
         for coord in node.coordinates:
             x_vals.append(coord.x)

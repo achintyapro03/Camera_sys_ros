@@ -42,7 +42,7 @@ class CameraState():
         self.angles = [0, 0, 0]  # yaw, pitch, roll (in degrees)
         self.offset = [0, 0, 0]  # constant angle offsets (in radians)
         self.radians = [0, 0, 0]  # store the angles in radians
-        self.calibrated = False
+        self.calibrated = True
         self.points_list = []
         self.R = np.eye(3)  # Identity matrix for initial rotation
         self.t = np.zeros(3)  # Zero translation vector
@@ -68,7 +68,7 @@ class InterpolatorNode(Node):
         super().__init__('interpolator_node')
 
 
-        self.declare_parameter('serial_port', '/dev/ttyUSB0')
+        self.declare_parameter('serial_port', '/dev/ttyACM0')
         self.declare_parameter('baud_rate', 9600)
         self.declare_parameter('send_interval', 0.05)
         self.declare_parameter('rcv_interval', 0.05)
@@ -82,6 +82,8 @@ class InterpolatorNode(Node):
 
         try:
             self.ser = serial.Serial(serial_port, baud_rate, timeout=1)
+            self.get_logger().info(f"success")
+
         except serial.SerialException as e:
             self.get_logger().error(f"Failed to open serial port: {e}")
             # raise
@@ -167,10 +169,10 @@ class InterpolatorNode(Node):
         P_left = K @ self.cam_left.M[:3,:]
         P_right = K @ self.cam_right.M[:3,:]
 
-        A = [point_left[1]*P_left[2,:] - P_left[1,:],
-         P_left[0,:] - point_left[0]*P_left[2,:],
-         point_right[1]*P_right[2,:] - P_right[1,:],
-         P_right[0,:] - point_right[0]*P_right[2,:]
+        A = [point_left.y*P_left[2,:] - P_left[1,:],
+         P_left[0,:] - point_left.x*P_left[2,:],
+         point_right.y*P_right[2,:] - P_right[1,:],
+         P_right[0,:] - point_right.x*P_right[2,:]
         ]
         A = np.array(A).reshape((4,4))
         #print('A: ')
@@ -245,13 +247,14 @@ class InterpolatorNode(Node):
         except Exception as e: 
             self.get_logger().error("read exception : " + str(e))
 
-        self.get_logger().info(f"{self.cam_left.points_list}, {self.cam_right.points_list}")
+        # self.get_logger().info(f"{self.cam_left.points_list}, {self.cam_right.points_list}")
 
         if(self.cam_left.calibrated and self.cam_right.calibrated):
             if(self.cam_left.points_list and self.cam_right.points_list):
                 msg = CoordinatesList()
                 for i, (point_left, point_right) in enumerate(zip(self.cam_left.points_list, self.cam_right.points_list)):
                     if i in mp_keypoints:
+                        
                         coordinates = self.DLT(point_left, point_right)
                         temp = Coordinates()    
                         temp.node_id = i
@@ -260,9 +263,11 @@ class InterpolatorNode(Node):
                         temp.z = coordinates[2]
                         msg.coordinates_list.append(temp)
                         if(i == 0):
-                            self.get_logger().info(f"{point_left}, {point_right}")
+                            self.get_logger().info(f"{point_left.x}, {point_right.x}, {point_left.y}, {point_right.y}")
                 if(len(msg.coordinates_list)):
                     self.coordinates_publisher.publish(msg)
+                    # self.get_logger().info(msg)
+
 
 
 def main(args=None):
