@@ -22,8 +22,8 @@ fy = 1430.0
 cx = 480.0
 cy = 620.0
 
-frame_shape_x = 1280
-frame_shape_y = 960
+frame_shape_x = 640
+frame_shape_y = 480
 
 K = np.array([
     [fx, 0, cx],
@@ -42,7 +42,7 @@ class CameraState():
         self.angles = [0, 0, 0]  # yaw, pitch, roll (in degrees)
         self.offset = [0, 0, 0]  # constant angle offsets (in radians)
         self.radians = [0, 0, 0]  # store the angles in radians
-        self.calibrated = True
+        self.calibrated = False
         self.points_list = []
         self.R = np.eye(3)  # Identity matrix for initial rotation
         self.t = np.zeros(3)  # Zero translation vector
@@ -58,9 +58,9 @@ class CameraState():
             self.angles[2] = roll  # Update roll (in degrees)
         
         # Convert angles from degrees to radians and store in self.radians
-        self.radians[0] = np.radians(self.angles[0] + self.offset[0])  # yaw
-        self.radians[1] = np.radians(self.angles[1] + self.offset[1])  # pitch
-        self.radians[2] = np.radians(self.angles[2] + self.offset[2])  # roll
+        self.radians[0] = np.radians(self.angles[0] - self.offset[0])  # yaw
+        self.radians[1] = np.radians(self.angles[1] - self.offset[1])  # pitch
+        self.radians[2] = np.radians(self.angles[2] - self.offset[2])  # roll
 
 
 class InterpolatorNode(Node):
@@ -96,7 +96,7 @@ class InterpolatorNode(Node):
         
         self.coordinates = np.zeros((100, 3))
         self.received_data = None
-        self.mode = 0
+        self.mode = 1
         self.temp = [0.0, 0.0, 0.0]
 
         self.joint_state_publisher_ = self.create_publisher(JointState, '/joint_states', 10)
@@ -108,7 +108,7 @@ class InterpolatorNode(Node):
         self.coordinates_publisher = self.create_publisher(CoordinatesList, '/coordinates_list', 10)
 
         # Initialize joint state message
-        self.pitch_inclination = 0
+        self.pitch_inclination = 0.0
 
         # Subscribers
         self.create_subscription(PointsList, 'cam_left/points_list', self.points_left_callback, 10)
@@ -126,13 +126,13 @@ class InterpolatorNode(Node):
 
     def set_calibration_left_callback(self, request, response):
         self.cam_left.calibrated = request.calibrated
-
+        self.cam_left.offset[0] = self.cam_left.angles[0] - 90
         response.success = True
         return response
 
     def set_calibration_right_callback(self, request, response):
         self.cam_right.calibrated = request.calibrated
-        
+        self.cam_right.offset[0] = self.cam_right.angles[0] - 270
         response.success = True
         return response
 
@@ -207,25 +207,51 @@ class InterpolatorNode(Node):
 
     def write_to_stream(self):
         try:
+            # self.get_logger().info("hi1")
             if self.cam_left.points_list and self.cam_right.points_list:
                 l = self.cam_left.points_list[0]
                 r = self.cam_right.points_list[0]
-                l.x = l.x - 0.5 * frame_shape_x
-                r.x = r.x - 0.5 * frame_shape_x
+                # self.get_logger().info(f"{l}")
+                # self.get_logger().info(f"{r}")
+                # self.get_logger().info(f"{l.x} {l.y} {r.x} {r.y}")
+
+                # tempx = l.x
+
+                # self.get_logger().info(f"{tempx}")
+
+                if(l.x > 6000):
+                    l.x = 6969.0
+                else:
+                    l.x = l.x - 0.5 * frame_shape_x
+                # self.get_logger().info("hi3")
+                if(r.x > 6000):
+                    r.x = 6969.0
+                else:
+                    r.x = r.x - 0.5 * frame_shape_x
+                # self.get_logger().info("hi4")
                 l.y = l.y - 0.2 * frame_shape_y 
                 r.y = r.y - 0.2 * frame_shape_y 
-                data = f"{(r.y + l.y)//2},{l.x},{r.x},{self.mode}\n"
+                data = f"{(int(r.y + l.y)//2)},{int(l.x)},{int(r.x)},{self.mode}\n"
                 self.ser.write(data.encode())
-        except:
-            pass
+                # self.get_logger().info(f"{data}")
+
+        except Exception as e:
+            self.get_logger().info(f"{e}")  
+            
 
     def read_from_stream(self):
         try:
+            # self.get_logger().info(f"gay gay")
+
             if self.ser.in_waiting > 0:
                 data = self.ser.readline().decode('utf-8', errors='ignore').strip()
-                # print(data)
+                # self.get_logger().info(f"ola1{data}")
                 try:
+                    # self.get_logger().info(f"saar pls")
                     data_list = list(map(float, data.split(',')))
+                    # self.get_logger().info(f"ola2{data_list}")
+                    if(len(data_list) != 3):
+                        return [0.0, 0.0, 0.0]
                     return data_list
                 except ValueError as e:
                     pass
@@ -250,6 +276,7 @@ class InterpolatorNode(Node):
         # self.get_logger().info(f"{self.cam_left.points_list}, {self.cam_right.points_list}")
 
         if(self.cam_left.calibrated and self.cam_right.calibrated):
+            self.mode = 2
             if(self.cam_left.points_list and self.cam_right.points_list):
                 msg = CoordinatesList()
                 for i, (point_left, point_right) in enumerate(zip(self.cam_left.points_list, self.cam_right.points_list)):

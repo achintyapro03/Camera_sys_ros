@@ -72,16 +72,18 @@ class CameraNode(Node):
             frame_markers = aruco.drawDetectedMarkers(frame.copy(), corners, ids)
 
             flag = False
+            # self.get_logger().error(f'{frame.shape}')
 
             if ids is not None:
                 self.points_list.clear()
                 for i in range(len(ids)):
                     if ids[i] == 3:
+                        flag = True
                         c = corners[i][0]
                         center_x = int(c[:, 0].mean())
                         center_y = int(c[:, 1].mean())
-                        x_diff = int(center_x - frame.shape[1] / 2.0)
-                        if abs(x_diff) == 0:
+                        x_diff = int(center_x)
+                        if abs(x_diff - 320) == 0:
                             self.calibrated = True  # Set the camera as calibrated if condition met
                             self.call_calibration_service(True)
                         self.points_list.append([x_diff, 0])
@@ -176,12 +178,12 @@ class CameraNode(Node):
     def run(self):
         if self.starting_mode == 1:
             self.find_aruco()
-        elif self.starting_mode == 2:
-            self.find_aruco()
-            tracking_id = int(input("Enter id of aruco to be tracked: "))
-            self.track_multi_aruco(tracking_id)
-        elif self.starting_mode == 3:
-            self.track_person()
+        # elif self.starting_mode == 2:
+        #     self.find_aruco()
+        #     tracking_id = int(input("Enter id of aruco to be tracked: "))
+        #     self.track_multi_aruco(tracking_id)
+        # elif self.starting_mode == 3:
+        self.track_person()
 
         self.cap.release()
 

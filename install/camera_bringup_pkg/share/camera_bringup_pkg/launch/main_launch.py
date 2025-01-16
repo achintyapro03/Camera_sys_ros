@@ -12,7 +12,7 @@ def generate_launch_description():
         parameters=[
             {'camera_id': 2},
             {'camera_name': 'cam_left'},
-            {'starting_mode': 3}
+            {'starting_mode': 1}
         ],
     ))
 
@@ -24,17 +24,17 @@ def generate_launch_description():
         parameters=[
             {'camera_id': 4},
             {'camera_name': 'cam_right'},
-            {'starting_mode': 3}
+            {'starting_mode': 1}
         ],
     ))
 
-    ld.add_action(Node(
-        package='camera_main_pkg',
-        executable='controller',
-        name='controller_node_1',
-        output='screen',
-        parameters=[],
-    ))
+    # ld.add_action(Node(
+    #     package='camera_main_pkg',
+    #     executable='controller',
+    #     name='controller_node_1',
+    #     output='screen',
+    #     parameters=[],
+    # ))
 
     ld.add_action(Node(
         package='camera_main_pkg',

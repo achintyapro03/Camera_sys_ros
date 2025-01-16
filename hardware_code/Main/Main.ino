@@ -42,9 +42,9 @@ int maxSteps[numSteppers];
 unsigned long previousTime = 0;
 const long interval = 50;
 
-double kp[numSteppers] = {3, 0.3, 0.3};
+double kp[numSteppers] = {3, 0.15, 0.15};
 double ki[numSteppers] = {0, 0, 0};
-double kd[numSteppers] = {0, 0, 0};
+double kd[numSteppers] = {0, 0., 0};
 
 double setpoints[numSteppers + 1] = {0, 0, 0, 1};
 double input[numSteppers];
@@ -58,6 +58,8 @@ double previousError[numSteppers] = {0, 0, 0};
 int reset = 0;
 bool caliberation_done = false;
 unsigned long startTime;
+
+int found[2] = {0, 0};
 
 void tcaselect(uint8_t i) {
   if (i > 7) return;
@@ -143,10 +145,11 @@ void setup() {
   Wire.write(0); // set to zero (wakes up the MPU-6050)
   Wire.endTransmission(true);
 
+  int speeds[3] = {1000, 200, 200};
   for (int i = 0; i < numSteppers; i++) {
     degreesToSteps[i] = stepsPerRevolution[i] / 360.0;
     maxSteps[i] = degreesToSteps[i] * 180;
-    steppers[i].setMaxSpeed(1000);
+    steppers[i].setMaxSpeed(speeds[i]);
     steppers[i].setAcceleration(500);
   }
   Serial.println("start");
@@ -178,7 +181,7 @@ void computePID(int i, float delta, int cond = 0){
   input[i] = finalAngles[i];
   double error;
 
-  if(cond == 0) error = setpoints[i];
+  if(cond == 0) error = -1 * setpoints[i];
   else {
     error = setpoints[i] - input[i];
   }
