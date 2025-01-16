@@ -35,7 +35,7 @@ K = np.array([
 dist = np.array([0, 0, 0, 0, 0], dtype=float)
 
 # mp_keypoints = [0, 11, 12, 13, 14, 15, 16]
-mp_keypoints = [0]
+mp_keypoints = [0, 11, 12]
 
 
 class CameraState():
@@ -142,7 +142,19 @@ class InterpolatorNode(Node):
         try:
             self.cam_neg.M, self.cam_neg.R, self.cam_neg.t = self.process_transform('cam_neg')
             self.cam_pos.M, self.cam_pos.R, self.cam_pos.t = self.process_transform('cam_pos')
-            # self.get_logger().info(f"left : {self.cam_neg.t}, right : {self.cam_pos.t}")
+
+            # Format the translation vectors to 2 decimal places
+            neg_t_formatted = f"[{self.cam_neg.t.x:.2f}, {self.cam_neg.t.y:.2f}, {self.cam_neg.t.z:.2f}]"
+            pos_t_formatted = f"[{self.cam_pos.t.x:.2f}, {self.cam_pos.t.y:.2f}, {self.cam_pos.t.z:.2f}]"
+
+            # Format the rotation matrices to 2 decimal places
+            neg_R_formatted = "\n".join(["[" + ", ".join([f"{value:.2f}" for value in row]) + "]" for row in self.cam_neg.R])
+            pos_R_formatted = "\n".join(["[" + ", ".join([f"{value:.2f}" for value in row]) + "]" for row in self.cam_pos.R])
+
+            # Log the information
+            self.get_logger().info(f"Camera neg:\nTranslation: {neg_t_formatted}\nRotation:\n{neg_R_formatted}")
+            self.get_logger().info(f"Camera pos:\nTranslation: {pos_t_formatted}\nRotation:\n{pos_R_formatted}")
+
             
         except (LookupException, ConnectivityException, ExtrapolationException) as e:
             self.get_logger().error(f"Failed to get transform: {e}")
@@ -277,10 +289,10 @@ class InterpolatorNode(Node):
                     if i in mp_keypoints:
                         point_neg_cpy = deepcopy(point_neg)
                         point_pos_cpy = deepcopy(point_pos)
-                        point_neg_cpy.x = 320.0
-                        point_neg_cpy.y = 192.0
-                        point_pos_cpy.x = 320.0
-                        point_pos_cpy.y = 192.0
+                        # point_neg_cpy.x = 320.0
+                        # point_neg_cpy.y = 192.0
+                        # point_pos_cpy.x = 320.0
+                        # point_pos_cpy.y = 192.0
 
                         coordinates = self.DLT(point_neg_cpy, point_pos_cpy)
                         temp = Coordinates()    
