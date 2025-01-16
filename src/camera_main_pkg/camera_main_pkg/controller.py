@@ -28,7 +28,7 @@ class MainWindow(QMainWindow):
     def __init__(self, node):
         super().__init__()
         self.node = node
-        self.names = ["pitch_inclination", "cam_left", "cam_right"]
+        self.names = ["pitch_inclination", "cam_neg", "cam_pos"]
         self.initUI()
 
     def initUI(self):

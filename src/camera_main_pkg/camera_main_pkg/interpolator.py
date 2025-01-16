@@ -13,6 +13,7 @@ from tf2_ros import Buffer, TransformListener
 from tf2_ros import LookupException, ConnectivityException, ExtrapolationException
 import tf_transformations
 from scipy import linalg
+from copy import deepcopy
 
 
 camera_width = 1280.0
@@ -33,21 +34,22 @@ K = np.array([
 
 dist = np.array([0, 0, 0, 0, 0], dtype=float)
 
-mp_keypoints = [0, 11, 12, 13, 14, 15, 16]
+# mp_keypoints = [0, 11, 12, 13, 14, 15, 16]
+mp_keypoints = [0]
 
 
 class CameraState():
-    def __init__(self, cam_name):
+    def __init__(self, cam_name, mode):
         self.cam_name = cam_name
         self.angles = [0, 0, 0]  # yaw, pitch, roll (in degrees)
         self.offset = [0, 0, 0]  # constant angle offsets (in radians)
         self.radians = [0, 0, 0]  # store the angles in radians
-        self.calibrated = False
+        self.calibrated = False if mode == 1 else True
         self.points_list = []
         self.R = np.eye(3)  # Identity matrix for initial rotation
         self.t = np.zeros(3)  # Zero translation vector
         self.M = np.eye(4) # Identity matrix
-        self.frame_shape = (1280, 640)  # X, Y
+        # self.frame_shape = (1280, 640)  # X, Y
     
     def update(self, yaw=None, pitch=None, roll=None):
         if yaw is not None:
@@ -78,7 +80,7 @@ class InterpolatorNode(Node):
         baud_rate = self.get_parameter('baud_rate').value
         send_interval = self.get_parameter('send_interval').value
         rcv_interval = self.get_parameter('rcv_interval').value
-        self.mode = self.get_parameter('starting_mode').value
+        self.mode = int(self.get_parameter('starting_mode').value)
 
         try:
             self.ser = serial.Serial(serial_port, baud_rate, timeout=1)
@@ -88,21 +90,21 @@ class InterpolatorNode(Node):
             self.get_logger().error(f"Failed to open serial port: {e}")
             # raise
 
-        self.cam_left = CameraState(cam_name="cam_left")
-        self.cam_right = CameraState(cam_name="cam_right")
+        self.cam_neg = CameraState(cam_name="cam_neg", mode = self.mode)
+        self.cam_pos = CameraState(cam_name="cam_pos", mode = self.mode)
 
-        self.srv_left = self.create_service(SetCalibration, 'cam_left/set_calibration', self.set_calibration_left_callback)
-        self.srv_right = self.create_service(SetCalibration, 'cam_right/set_calibration', self.set_calibration_right_callback)
+        self.srv_left = self.create_service(SetCalibration, 'cam_neg/set_calibration', self.set_calibration_neg_callback)
+        self.srv_right = self.create_service(SetCalibration, 'cam_pos/set_calibration', self.set_calibration_right_callback)
         
         self.coordinates = np.zeros((100, 3))
         self.received_data = None
-        self.mode = 1
+
         self.temp = [0.0, 0.0, 0.0]
 
         self.joint_state_publisher_ = self.create_publisher(JointState, '/joint_states', 10)
         self.joint_state_timer = self.create_timer(0.1, self.publish_joint_states)
         self.joint_state = JointState()
-        self.joint_state.name = ['pitch_inclination', 'cam_left_yaw', 'cam_right_yaw']
+        self.joint_state.name = ['pitch_inclination', 'cam_neg_yaw', 'cam_pos_yaw']
         self.joint_state.position = [0.0, 0.0, 0.0]  # Initial positions
 
         self.coordinates_publisher = self.create_publisher(CoordinatesList, '/coordinates_list', 10)
@@ -111,8 +113,8 @@ class InterpolatorNode(Node):
         self.pitch_inclination = 0.0
 
         # Subscribers
-        self.create_subscription(PointsList, 'cam_left/points_list', self.points_left_callback, 10)
-        self.create_subscription(PointsList, 'cam_right/points_list', self.points_right_callback, 10)
+        self.create_subscription(PointsList, 'cam_neg/points_list', self.points_left_callback, 10)
+        self.create_subscription(PointsList, 'cam_pos/points_list', self.points_right_callback, 10)
 
         # Timer for sending data to arduino
         self.send_timer = self.create_timer(send_interval, self.write_to_stream)
@@ -124,30 +126,30 @@ class InterpolatorNode(Node):
         self.tf_listener = TransformListener(self.tf_buffer, self)
         self.transform_timer = self.create_timer(0.05, self.get_transforms)
 
-    def set_calibration_left_callback(self, request, response):
-        self.cam_left.calibrated = request.calibrated
-        self.cam_left.offset[0] = self.cam_left.angles[0] - 90
+    def set_calibration_neg_callback(self, request, response):
+        self.cam_neg.calibrated = request.calibrated
+        self.cam_neg.offset[0] = self.cam_neg.angles[0] + 90
         response.success = True
         return response
 
     def set_calibration_right_callback(self, request, response):
-        self.cam_right.calibrated = request.calibrated
-        self.cam_right.offset[0] = self.cam_right.angles[0] - 270
+        self.cam_pos.calibrated = request.calibrated
+        self.cam_pos.offset[0] = self.cam_pos.angles[0] - 90
         response.success = True
         return response
 
-
     def get_transforms(self):
         try:
-            self.cam_left.M, self.cam_left.R, self.cam_left.t = self.process_transform('cam_left')
-            self.cam_right.M, self.cam_right.R, self.cam_right.t = self.process_transform('cam_right')
-
+            self.cam_neg.M, self.cam_neg.R, self.cam_neg.t = self.process_transform('cam_neg')
+            self.cam_pos.M, self.cam_pos.R, self.cam_pos.t = self.process_transform('cam_pos')
+            # self.get_logger().info(f"left : {self.cam_neg.t}, right : {self.cam_pos.t}")
+            
         except (LookupException, ConnectivityException, ExtrapolationException) as e:
             self.get_logger().error(f"Failed to get transform: {e}")
 
 
     def process_transform(self, cam_name):
-        transform = self.tf_buffer.lookup_transform(cam_name, 'base_link', rclpy.time.Time())
+        transform = self.tf_buffer.lookup_transform('base_link', cam_name, rclpy.time.Time())
         quat = transform.transform.rotation
         translation = transform.transform.translation
 
@@ -165,14 +167,14 @@ class InterpolatorNode(Node):
     def temp_callback(self, msg):
         self.temp = msg.data
 
-    def DLT(self, point_left, point_right):
-        P_left = K @ self.cam_left.M[:3,:]
-        P_right = K @ self.cam_right.M[:3,:]
+    def DLT(self, point_neg, point_pos):
+        P_left = K @ self.cam_neg.M[:3,:]
+        P_right = K @ self.cam_pos.M[:3,:]
 
-        A = [point_left.y*P_left[2,:] - P_left[1,:],
-         P_left[0,:] - point_left.x*P_left[2,:],
-         point_right.y*P_right[2,:] - P_right[1,:],
-         P_right[0,:] - point_right.x*P_right[2,:]
+        A = [point_neg.y*P_left[2,:] - P_left[1,:],
+         P_left[0,:] - point_neg.x*P_left[2,:],
+         point_pos.y*P_right[2,:] - P_right[1,:],
+         P_right[0,:] - point_pos.x*P_right[2,:]
         ]
         A = np.array(A).reshape((4,4))
         #print('A: ')
@@ -190,66 +192,56 @@ class InterpolatorNode(Node):
         # Generate random values within joint limits
         self.joint_state.position = [
             self.pitch_inclination,
-            self.cam_left.radians[0],
-            self.cam_right.radians[0]
+            self.cam_neg.radians[0],
+            self.cam_pos.radians[0]
         ]
         self.joint_state.header.stamp = self.get_clock().now().to_msg()
         self.joint_state_publisher_.publish(self.joint_state)
-        # self.get_logger().info(f"Publishing points: {self.joint_state.position}")
 
 
     def points_left_callback(self, msg):
-        self.cam_left.points_list = msg.points_list
-        # self.get_logger().info(f"x: {self.cam_left.points_list[0].x}, y: {self.cam_left.points_list[0].y}")
+        self.cam_neg.points_list = msg.points_list
 
     def points_right_callback(self, msg):
-        self.cam_right.points_list = msg.points_list
+        self.cam_pos.points_list = msg.points_list
 
     def write_to_stream(self):
         try:
-            # self.get_logger().info("hi1")
-            if self.cam_left.points_list and self.cam_right.points_list:
-                l = self.cam_left.points_list[0]
-                r = self.cam_right.points_list[0]
-                # self.get_logger().info(f"{l}")
-                # self.get_logger().info(f"{r}")
-                # self.get_logger().info(f"{l.x} {l.y} {r.x} {r.y}")
+            if self.cam_neg.points_list and self.cam_pos.points_list:
+                l = deepcopy(self.cam_neg.points_list[0]) 
+                r = deepcopy(self.cam_pos.points_list[0])
 
-                # tempx = l.x
-
-                # self.get_logger().info(f"{tempx}")
-
-                if(l.x > 6000):
+                if l.x > 6000:
                     l.x = 6969.0
                 else:
                     l.x = l.x - 0.5 * frame_shape_x
-                # self.get_logger().info("hi3")
-                if(r.x > 6000):
+                if r.x > 6000:
                     r.x = 6969.0
                 else:
                     r.x = r.x - 0.5 * frame_shape_x
-                # self.get_logger().info("hi4")
+
                 l.y = l.y - 0.2 * frame_shape_y 
                 r.y = r.y - 0.2 * frame_shape_y 
-                data = f"{(int(r.y + l.y)//2)},{int(l.x)},{int(r.x)},{self.mode}\n"
+                a = math.degrees(self.cam_neg.radians[0]) % 360
+                b = math.degrees(self.cam_pos.radians[0]) % 360
+                x = 1
+                if((a < 90 or a > 270) and (b < 90 or b > 270)):
+                    x = -1;
+                data = f"{(x * int(r.y + l.y) // 2)},{int(l.x)},{int(r.x)},{self.mode}\n"
                 self.ser.write(data.encode())
-                # self.get_logger().info(f"{data}")
+                self.get_logger().info(f"{data}")
 
         except Exception as e:
             self.get_logger().info(f"{e}")  
+
             
 
     def read_from_stream(self):
         try:
-            # self.get_logger().info(f"gay gay")
-
             if self.ser.in_waiting > 0:
                 data = self.ser.readline().decode('utf-8', errors='ignore').strip()
-                # self.get_logger().info(f"ola1{data}")
                 try:
-                    # self.get_logger().info(f"saar pls")
                     data_list = list(map(float, data.split(',')))
-                    # self.get_logger().info(f"ola2{data_list}")
                     if(len(data_list) != 3):
                         return [0.0, 0.0, 0.0]
                     return data_list
@@ -267,34 +259,40 @@ class InterpolatorNode(Node):
         try:
             if self.received_data:
                 self.pitch_inclination = self.received_data[0] * math.pi / 180
-                self.cam_left.update(yaw=self.received_data[1], pitch=self.received_data[0], roll=0)
-                self.cam_right.update(yaw=self.received_data[2], pitch=self.received_data[0], roll=0)
+                self.cam_neg.update(yaw=self.received_data[1], pitch=self.received_data[0], roll=0)
+                self.cam_pos.update(yaw=self.received_data[2], pitch=self.received_data[0], roll=0)
 
         except Exception as e: 
             self.get_logger().error("read exception : " + str(e))
 
-        # self.get_logger().info(f"{self.cam_left.points_list}, {self.cam_right.points_list}")
 
-        if(self.cam_left.calibrated and self.cam_right.calibrated):
+        if(self.cam_neg.calibrated and self.cam_pos.calibrated):
             self.mode = 2
-            if(self.cam_left.points_list and self.cam_right.points_list):
+
+            if(self.cam_neg.points_list and self.cam_pos.points_list):
+
+                # self.get_logger().info(f"{(math.degrees(self.cam_neg.radians[0]) % 360):.2f} {(math.degrees(self.cam_pos.radians[0]) % 360):.2f}")
                 msg = CoordinatesList()
-                for i, (point_left, point_right) in enumerate(zip(self.cam_left.points_list, self.cam_right.points_list)):
+                for i, (point_neg, point_pos) in enumerate(zip(self.cam_neg.points_list, self.cam_pos.points_list)):
                     if i in mp_keypoints:
-                        
-                        coordinates = self.DLT(point_left, point_right)
+                        point_neg_cpy = deepcopy(point_neg)
+                        point_pos_cpy = deepcopy(point_pos)
+                        point_neg_cpy.x = 320.0
+                        point_neg_cpy.y = 192.0
+                        point_pos_cpy.x = 320.0
+                        point_pos_cpy.y = 192.0
+
+                        coordinates = self.DLT(point_neg_cpy, point_pos_cpy)
                         temp = Coordinates()    
                         temp.node_id = i
                         temp.x = coordinates[0]
                         temp.y = coordinates[1]
                         temp.z = coordinates[2]
                         msg.coordinates_list.append(temp)
-                        if(i == 0):
-                            self.get_logger().info(f"{point_left.x}, {point_right.x}, {point_left.y}, {point_right.y}")
+                        # if(i == 0):
+                        #     self.get_logger().info(f"{point_neg.x}\t{point_pos.x}\t{point_neg.y}\t{point_pos.y}")
                 if(len(msg.coordinates_list)):
                     self.coordinates_publisher.publish(msg)
-                    # self.get_logger().info(msg)
-
 
 
 def main(args=None):

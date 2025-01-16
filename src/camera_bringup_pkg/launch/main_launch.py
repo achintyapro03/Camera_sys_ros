@@ -4,6 +4,8 @@ from launch_ros.actions import Node
 def generate_launch_description():
     ld = LaunchDescription()
 
+    starting_mode = 1
+
     ld.add_action(Node(
         package='camera_main_pkg',
         executable='video_processor',
@@ -11,8 +13,8 @@ def generate_launch_description():
         output='screen',
         parameters=[
             {'camera_id': 2},
-            {'camera_name': 'cam_left'},
-            {'starting_mode': 1}
+            {'camera_name': 'cam_neg'},
+            {'starting_mode': starting_mode}
         ],
     ))
 
@@ -23,18 +25,19 @@ def generate_launch_description():
         output='screen',
         parameters=[
             {'camera_id': 4},
-            {'camera_name': 'cam_right'},
-            {'starting_mode': 1}
+            {'camera_name': 'cam_pos'},
+            {'starting_mode': starting_mode}
         ],
     ))
 
-    # ld.add_action(Node(
-    #     package='camera_main_pkg',
-    #     executable='controller',
-    #     name='controller_node_1',
-    #     output='screen',
-    #     parameters=[],
-    # ))
+    if(starting_mode != 1):
+        ld.add_action(Node(
+            package='camera_main_pkg',
+            executable='controller',
+            name='controller_node_1',
+            output='screen',
+            parameters=[],
+        ))
 
     ld.add_action(Node(
         package='camera_main_pkg',
@@ -46,7 +49,7 @@ def generate_launch_description():
             {'baud_rate': 115200},
             {'send_interval': 0.05},
             {'rcv_interval': 0.05},
-            {'starting_mode': 1}
+            {'starting_mode': starting_mode}
         ],
     ))
 

@@ -1,0 +1,394 @@
+[0.318s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.319s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=8, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x71bfc3594250>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x71bfc3567cd0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x71bfc3567cd0>>)
+[1.170s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[1.170s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[1.170s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[1.171s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[1.171s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[1.171s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[1.171s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/achintya/Software/ROSPlayground/camera_ws_main'
+[1.171s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[1.172s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[1.172s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[1.172s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[1.172s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[1.172s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[1.172s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[1.173s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[1.173s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[1.237s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[1.237s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[1.237s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[1.237s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[1.238s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[1.238s] Level 1:colcon.colcon_core.package_identification:_identify(assets) by extensions ['ignore', 'ignore_ament_install']
+[1.238s] Level 1:colcon.colcon_core.package_identification:_identify(assets) by extension 'ignore'
+[1.238s] Level 1:colcon.colcon_core.package_identification:_identify(assets) by extension 'ignore_ament_install'
+[1.239s] Level 1:colcon.colcon_core.package_identification:_identify(assets) by extensions ['colcon_pkg']
+[1.239s] Level 1:colcon.colcon_core.package_identification:_identify(assets) by extension 'colcon_pkg'
+[1.240s] Level 1:colcon.colcon_core.package_identification:_identify(assets) by extensions ['colcon_meta']
+[1.240s] Level 1:colcon.colcon_core.package_identification:_identify(assets) by extension 'colcon_meta'
+[1.240s] Level 1:colcon.colcon_core.package_identification:_identify(assets) by extensions ['ros']
+[1.240s] Level 1:colcon.colcon_core.package_identification:_identify(assets) by extension 'ros'
+[1.240s] Level 1:colcon.colcon_core.package_identification:_identify(assets) by extensions ['cmake', 'python']
+[1.241s] Level 1:colcon.colcon_core.package_identification:_identify(assets) by extension 'cmake'
+[1.241s] Level 1:colcon.colcon_core.package_identification:_identify(assets) by extension 'python'
+[1.241s] Level 1:colcon.colcon_core.package_identification:_identify(assets) by extensions ['python_setup_py']
+[1.241s] Level 1:colcon.colcon_core.package_identification:_identify(assets) by extension 'python_setup_py'
+[1.241s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[1.242s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[1.242s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[1.242s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code) by extensions ['ignore', 'ignore_ament_install']
+[1.242s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code) by extension 'ignore'
+[1.242s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code) by extension 'ignore_ament_install'
+[1.243s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code) by extensions ['colcon_pkg']
+[1.243s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code) by extension 'colcon_pkg'
+[1.243s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code) by extensions ['colcon_meta']
+[1.243s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code) by extension 'colcon_meta'
+[1.243s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code) by extensions ['ros']
+[1.243s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code) by extension 'ros'
+[1.243s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code) by extensions ['cmake', 'python']
+[1.244s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code) by extension 'cmake'
+[1.244s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code) by extension 'python'
+[1.244s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code) by extensions ['python_setup_py']
+[1.244s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code) by extension 'python_setup_py'
+[1.244s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/Main) by extensions ['ignore', 'ignore_ament_install']
+[1.245s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/Main) by extension 'ignore'
+[1.245s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/Main) by extension 'ignore_ament_install'
+[1.245s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/Main) by extensions ['colcon_pkg']
+[1.245s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/Main) by extension 'colcon_pkg'
+[1.245s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/Main) by extensions ['colcon_meta']
+[1.245s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/Main) by extension 'colcon_meta'
+[1.246s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/Main) by extensions ['ros']
+[1.246s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/Main) by extension 'ros'
+[1.246s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/Main) by extensions ['cmake', 'python']
+[1.246s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/Main) by extension 'cmake'
+[1.246s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/Main) by extension 'python'
+[1.246s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/Main) by extensions ['python_setup_py']
+[1.246s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/Main) by extension 'python_setup_py'
+[1.247s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/stepper_tester) by extensions ['ignore', 'ignore_ament_install']
+[1.247s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/stepper_tester) by extension 'ignore'
+[1.247s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/stepper_tester) by extension 'ignore_ament_install'
+[1.248s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/stepper_tester) by extensions ['colcon_pkg']
+[1.248s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/stepper_tester) by extension 'colcon_pkg'
+[1.248s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/stepper_tester) by extensions ['colcon_meta']
+[1.249s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/stepper_tester) by extension 'colcon_meta'
+[1.249s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/stepper_tester) by extensions ['ros']
+[1.249s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/stepper_tester) by extension 'ros'
+[1.249s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/stepper_tester) by extensions ['cmake', 'python']
+[1.249s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/stepper_tester) by extension 'cmake'
+[1.249s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/stepper_tester) by extension 'python'
+[1.249s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/stepper_tester) by extensions ['python_setup_py']
+[1.250s] Level 1:colcon.colcon_core.package_identification:_identify(hardware_code/stepper_tester) by extension 'python_setup_py'
+[1.250s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[1.250s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[1.250s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[1.253s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[1.253s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[1.253s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[1.254s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[1.254s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[1.254s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[1.254s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[1.254s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[1.255s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[1.255s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[1.255s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[1.255s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[1.255s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[1.255s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[1.255s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[1.256s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[1.256s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[1.256s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_bringup_pkg) by extensions ['ignore', 'ignore_ament_install']
+[1.259s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_bringup_pkg) by extension 'ignore'
+[1.260s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_bringup_pkg) by extension 'ignore_ament_install'
+[1.260s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_bringup_pkg) by extensions ['colcon_pkg']
+[1.260s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_bringup_pkg) by extension 'colcon_pkg'
+[1.260s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_bringup_pkg) by extensions ['colcon_meta']
+[1.260s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_bringup_pkg) by extension 'colcon_meta'
+[1.261s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_bringup_pkg) by extensions ['ros']
+[1.261s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_bringup_pkg) by extension 'ros'
+[1.271s] DEBUG:colcon.colcon_core.package_identification:Package 'src/camera_bringup_pkg' with type 'ros.ament_cmake' and name 'camera_bringup_pkg'
+[1.272s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_cpp_pkg) by extensions ['ignore', 'ignore_ament_install']
+[1.272s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_cpp_pkg) by extension 'ignore'
+[1.272s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_cpp_pkg) by extension 'ignore_ament_install'
+[1.273s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_cpp_pkg) by extensions ['colcon_pkg']
+[1.273s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_cpp_pkg) by extension 'colcon_pkg'
+[1.273s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_cpp_pkg) by extensions ['colcon_meta']
+[1.273s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_cpp_pkg) by extension 'colcon_meta'
+[1.273s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_cpp_pkg) by extensions ['ros']
+[1.273s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_cpp_pkg) by extension 'ros'
+[1.275s] DEBUG:colcon.colcon_core.package_identification:Package 'src/camera_cpp_pkg' with type 'ros.ament_cmake' and name 'camera_cpp_pkg'
+[1.276s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_interface_pkg) by extensions ['ignore', 'ignore_ament_install']
+[1.276s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_interface_pkg) by extension 'ignore'
+[1.277s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_interface_pkg) by extension 'ignore_ament_install'
+[1.277s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_interface_pkg) by extensions ['colcon_pkg']
+[1.277s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_interface_pkg) by extension 'colcon_pkg'
+[1.277s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_interface_pkg) by extensions ['colcon_meta']
+[1.277s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_interface_pkg) by extension 'colcon_meta'
+[1.277s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_interface_pkg) by extensions ['ros']
+[1.278s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_interface_pkg) by extension 'ros'
+[1.279s] DEBUG:colcon.colcon_core.package_identification:Package 'src/camera_interface_pkg' with type 'ros.ament_cmake' and name 'camera_interface_pkg'
+[1.280s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_main_pkg) by extensions ['ignore', 'ignore_ament_install']
+[1.280s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_main_pkg) by extension 'ignore'
+[1.280s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_main_pkg) by extension 'ignore_ament_install'
+[1.280s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_main_pkg) by extensions ['colcon_pkg']
+[1.280s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_main_pkg) by extension 'colcon_pkg'
+[1.280s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_main_pkg) by extensions ['colcon_meta']
+[1.280s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_main_pkg) by extension 'colcon_meta'
+[1.281s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_main_pkg) by extensions ['ros']
+[1.281s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_main_pkg) by extension 'ros'
+[1.283s] DEBUG:colcon.colcon_core.package_identification:Package 'src/camera_main_pkg' with type 'ros.ament_python' and name 'camera_main_pkg'
+[1.283s] Level 1:colcon.colcon_core.package_identification:_identify(testing) by extensions ['ignore', 'ignore_ament_install']
+[1.283s] Level 1:colcon.colcon_core.package_identification:_identify(testing) by extension 'ignore'
+[1.284s] Level 1:colcon.colcon_core.package_identification:_identify(testing) by extension 'ignore_ament_install'
+[1.284s] Level 1:colcon.colcon_core.package_identification:_identify(testing) by extensions ['colcon_pkg']
+[1.284s] Level 1:colcon.colcon_core.package_identification:_identify(testing) by extension 'colcon_pkg'
+[1.284s] Level 1:colcon.colcon_core.package_identification:_identify(testing) by extensions ['colcon_meta']
+[1.284s] Level 1:colcon.colcon_core.package_identification:_identify(testing) by extension 'colcon_meta'
+[1.284s] Level 1:colcon.colcon_core.package_identification:_identify(testing) by extensions ['ros']
+[1.284s] Level 1:colcon.colcon_core.package_identification:_identify(testing) by extension 'ros'
+[1.285s] Level 1:colcon.colcon_core.package_identification:_identify(testing) by extensions ['cmake', 'python']
+[1.285s] Level 1:colcon.colcon_core.package_identification:_identify(testing) by extension 'cmake'
+[1.285s] Level 1:colcon.colcon_core.package_identification:_identify(testing) by extension 'python'
+[1.285s] Level 1:colcon.colcon_core.package_identification:_identify(testing) by extensions ['python_setup_py']
+[1.285s] Level 1:colcon.colcon_core.package_identification:_identify(testing) by extension 'python_setup_py'
+[1.285s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[1.286s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[1.286s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[1.286s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[1.286s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[1.359s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[1.360s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[1.377s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 4 installed packages in /home/achintya/Software/ROSPlayground/camera_ws_main/install
+[1.378s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 0 installed packages in /home/achintya/Software/ROSPlayground/camera_ws/install
+[1.385s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 275 installed packages in /opt/ros/humble
+[1.390s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[1.516s] Level 5:colcon.colcon_core.verb:set package 'camera_cpp_pkg' build argument 'cmake_args' from command line to 'None'
+[1.516s] Level 5:colcon.colcon_core.verb:set package 'camera_cpp_pkg' build argument 'cmake_target' from command line to 'None'
+[1.516s] Level 5:colcon.colcon_core.verb:set package 'camera_cpp_pkg' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.516s] Level 5:colcon.colcon_core.verb:set package 'camera_cpp_pkg' build argument 'cmake_clean_cache' from command line to 'False'
+[1.516s] Level 5:colcon.colcon_core.verb:set package 'camera_cpp_pkg' build argument 'cmake_clean_first' from command line to 'False'
+[1.516s] Level 5:colcon.colcon_core.verb:set package 'camera_cpp_pkg' build argument 'cmake_force_configure' from command line to 'False'
+[1.516s] Level 5:colcon.colcon_core.verb:set package 'camera_cpp_pkg' build argument 'ament_cmake_args' from command line to 'None'
+[1.516s] Level 5:colcon.colcon_core.verb:set package 'camera_cpp_pkg' build argument 'catkin_cmake_args' from command line to 'None'
+[1.516s] Level 5:colcon.colcon_core.verb:set package 'camera_cpp_pkg' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.517s] DEBUG:colcon.colcon_core.verb:Building package 'camera_cpp_pkg' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_cpp_pkg', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg', 'merge_install': False, 'path': '/home/achintya/Software/ROSPlayground/camera_ws_main/src/camera_cpp_pkg', 'symlink_install': False, 'test_result_base': None}
+[1.518s] Level 5:colcon.colcon_core.verb:set package 'camera_interface_pkg' build argument 'cmake_args' from command line to 'None'
+[1.518s] Level 5:colcon.colcon_core.verb:set package 'camera_interface_pkg' build argument 'cmake_target' from command line to 'None'
+[1.518s] Level 5:colcon.colcon_core.verb:set package 'camera_interface_pkg' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.518s] Level 5:colcon.colcon_core.verb:set package 'camera_interface_pkg' build argument 'cmake_clean_cache' from command line to 'False'
+[1.519s] Level 5:colcon.colcon_core.verb:set package 'camera_interface_pkg' build argument 'cmake_clean_first' from command line to 'False'
+[1.520s] Level 5:colcon.colcon_core.verb:set package 'camera_interface_pkg' build argument 'cmake_force_configure' from command line to 'False'
+[1.520s] Level 5:colcon.colcon_core.verb:set package 'camera_interface_pkg' build argument 'ament_cmake_args' from command line to 'None'
+[1.520s] Level 5:colcon.colcon_core.verb:set package 'camera_interface_pkg' build argument 'catkin_cmake_args' from command line to 'None'
+[1.520s] Level 5:colcon.colcon_core.verb:set package 'camera_interface_pkg' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.520s] DEBUG:colcon.colcon_core.verb:Building package 'camera_interface_pkg' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_interface_pkg', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg', 'merge_install': False, 'path': '/home/achintya/Software/ROSPlayground/camera_ws_main/src/camera_interface_pkg', 'symlink_install': False, 'test_result_base': None}
+[1.521s] Level 5:colcon.colcon_core.verb:set package 'camera_bringup_pkg' build argument 'cmake_args' from command line to 'None'
+[1.521s] Level 5:colcon.colcon_core.verb:set package 'camera_bringup_pkg' build argument 'cmake_target' from command line to 'None'
+[1.522s] Level 5:colcon.colcon_core.verb:set package 'camera_bringup_pkg' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.522s] Level 5:colcon.colcon_core.verb:set package 'camera_bringup_pkg' build argument 'cmake_clean_cache' from command line to 'False'
+[1.522s] Level 5:colcon.colcon_core.verb:set package 'camera_bringup_pkg' build argument 'cmake_clean_first' from command line to 'False'
+[1.522s] Level 5:colcon.colcon_core.verb:set package 'camera_bringup_pkg' build argument 'cmake_force_configure' from command line to 'False'
+[1.522s] Level 5:colcon.colcon_core.verb:set package 'camera_bringup_pkg' build argument 'ament_cmake_args' from command line to 'None'
+[1.522s] Level 5:colcon.colcon_core.verb:set package 'camera_bringup_pkg' build argument 'catkin_cmake_args' from command line to 'None'
+[1.522s] Level 5:colcon.colcon_core.verb:set package 'camera_bringup_pkg' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.522s] DEBUG:colcon.colcon_core.verb:Building package 'camera_bringup_pkg' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_bringup_pkg', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg', 'merge_install': False, 'path': '/home/achintya/Software/ROSPlayground/camera_ws_main/src/camera_bringup_pkg', 'symlink_install': False, 'test_result_base': None}
+[1.523s] Level 5:colcon.colcon_core.verb:set package 'camera_main_pkg' build argument 'cmake_args' from command line to 'None'
+[1.523s] Level 5:colcon.colcon_core.verb:set package 'camera_main_pkg' build argument 'cmake_target' from command line to 'None'
+[1.523s] Level 5:colcon.colcon_core.verb:set package 'camera_main_pkg' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.523s] Level 5:colcon.colcon_core.verb:set package 'camera_main_pkg' build argument 'cmake_clean_cache' from command line to 'False'
+[1.523s] Level 5:colcon.colcon_core.verb:set package 'camera_main_pkg' build argument 'cmake_clean_first' from command line to 'False'
+[1.523s] Level 5:colcon.colcon_core.verb:set package 'camera_main_pkg' build argument 'cmake_force_configure' from command line to 'False'
+[1.524s] Level 5:colcon.colcon_core.verb:set package 'camera_main_pkg' build argument 'ament_cmake_args' from command line to 'None'
+[1.524s] Level 5:colcon.colcon_core.verb:set package 'camera_main_pkg' build argument 'catkin_cmake_args' from command line to 'None'
+[1.524s] Level 5:colcon.colcon_core.verb:set package 'camera_main_pkg' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.524s] DEBUG:colcon.colcon_core.verb:Building package 'camera_main_pkg' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg', 'merge_install': False, 'path': '/home/achintya/Software/ROSPlayground/camera_ws_main/src/camera_main_pkg', 'symlink_install': False, 'test_result_base': None}
+[1.524s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[1.527s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[1.527s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/achintya/Software/ROSPlayground/camera_ws_main/src/camera_cpp_pkg' with build type 'ament_cmake'
+[1.528s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/achintya/Software/ROSPlayground/camera_ws_main/src/camera_cpp_pkg'
+[1.537s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[1.538s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.538s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.551s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/achintya/Software/ROSPlayground/camera_ws_main/src/camera_interface_pkg' with build type 'ament_cmake'
+[1.552s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/achintya/Software/ROSPlayground/camera_ws_main/src/camera_interface_pkg'
+[1.553s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.553s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.598s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_cpp_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg:/opt/ros/humble /usr/bin/cmake --build /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_cpp_pkg -- -j8 -l8
+[1.618s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_interface_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg:/opt/ros/humble /usr/bin/cmake --build /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_interface_pkg -- -j8 -l8
+[1.744s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_cpp_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg:/opt/ros/humble /usr/bin/cmake --build /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_cpp_pkg -- -j8 -l8
+[1.814s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_cpp_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg:/opt/ros/humble /usr/bin/cmake --install /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_cpp_pkg
+[1.846s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(camera_cpp_pkg)
+[1.850s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_cpp_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg:/opt/ros/humble /usr/bin/cmake --install /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_cpp_pkg
+[1.866s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg' for CMake module files
+[1.874s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg' for CMake config files
+[1.875s] Level 1:colcon.colcon_core.shell:create_environment_hook('camera_cpp_pkg', 'cmake_prefix_path')
+[1.876s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/hook/cmake_prefix_path.ps1'
+[1.892s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/hook/cmake_prefix_path.dsv'
+[1.894s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/hook/cmake_prefix_path.sh'
+[1.915s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/bin'
+[1.915s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/lib/pkgconfig/camera_cpp_pkg.pc'
+[1.916s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/lib/python3.10/site-packages'
+[1.922s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/bin'
+[1.928s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/package.ps1'
+[1.942s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/package.dsv'
+[1.945s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/package.sh'
+[1.947s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/package.bash'
+[1.951s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/package.zsh'
+[1.954s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/colcon-core/packages/camera_cpp_pkg)
+[1.955s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(camera_cpp_pkg)
+[1.956s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg' for CMake module files
+[1.958s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg' for CMake config files
+[1.958s] Level 1:colcon.colcon_core.shell:create_environment_hook('camera_cpp_pkg', 'cmake_prefix_path')
+[1.959s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/hook/cmake_prefix_path.ps1'
+[1.965s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/hook/cmake_prefix_path.dsv'
+[1.966s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/hook/cmake_prefix_path.sh'
+[1.968s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/bin'
+[1.968s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/lib/pkgconfig/camera_cpp_pkg.pc'
+[1.969s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/lib/python3.10/site-packages'
+[1.971s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/bin'
+[1.972s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/package.ps1'
+[1.976s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/package.dsv'
+[1.977s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/package.sh'
+[1.979s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/package.bash'
+[1.980s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/package.zsh'
+[1.982s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/colcon-core/packages/camera_cpp_pkg)
+[1.983s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/achintya/Software/ROSPlayground/camera_ws_main/src/camera_bringup_pkg' with build type 'ament_cmake'
+[1.985s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/achintya/Software/ROSPlayground/camera_ws_main/src/camera_bringup_pkg'
+[1.986s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.986s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[2.036s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_bringup_pkg': CMAKE_PREFIX_PATH=/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg:/opt/ros/humble /usr/bin/cmake --build /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_bringup_pkg -- -j8 -l8
+[2.153s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_bringup_pkg' returned '0': CMAKE_PREFIX_PATH=/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg:/opt/ros/humble /usr/bin/cmake --build /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_bringup_pkg -- -j8 -l8
+[2.163s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_bringup_pkg': CMAKE_PREFIX_PATH=/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg:/opt/ros/humble /usr/bin/cmake --install /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_bringup_pkg
+[2.200s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(camera_bringup_pkg)
+[2.201s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg' for CMake module files
+[2.203s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg' for CMake config files
+[2.205s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_bringup_pkg' returned '0': CMAKE_PREFIX_PATH=/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg:/opt/ros/humble /usr/bin/cmake --install /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_bringup_pkg
+[2.205s] Level 1:colcon.colcon_core.shell:create_environment_hook('camera_bringup_pkg', 'cmake_prefix_path')
+[2.206s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/share/camera_bringup_pkg/hook/cmake_prefix_path.ps1'
+[2.207s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/share/camera_bringup_pkg/hook/cmake_prefix_path.dsv'
+[2.209s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/share/camera_bringup_pkg/hook/cmake_prefix_path.sh'
+[2.211s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/bin'
+[2.211s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/lib/pkgconfig/camera_bringup_pkg.pc'
+[2.212s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/lib/python3.10/site-packages'
+[2.215s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/bin'
+[2.216s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/share/camera_bringup_pkg/package.ps1'
+[2.218s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/share/camera_bringup_pkg/package.dsv'
+[2.219s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/share/camera_bringup_pkg/package.sh'
+[2.220s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/share/camera_bringup_pkg/package.bash'
+[2.221s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/share/camera_bringup_pkg/package.zsh'
+[2.223s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/share/colcon-core/packages/camera_bringup_pkg)
+[2.225s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(camera_bringup_pkg)
+[2.227s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg' for CMake module files
+[2.228s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg' for CMake config files
+[2.229s] Level 1:colcon.colcon_core.shell:create_environment_hook('camera_bringup_pkg', 'cmake_prefix_path')
+[2.230s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/share/camera_bringup_pkg/hook/cmake_prefix_path.ps1'
+[2.233s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/share/camera_bringup_pkg/hook/cmake_prefix_path.dsv'
+[2.238s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/share/camera_bringup_pkg/hook/cmake_prefix_path.sh'
+[2.245s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/bin'
+[2.246s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/lib/pkgconfig/camera_bringup_pkg.pc'
+[2.248s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/lib/python3.10/site-packages'
+[2.250s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/bin'
+[2.252s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/share/camera_bringup_pkg/package.ps1'
+[2.256s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/share/camera_bringup_pkg/package.dsv'
+[2.258s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/share/camera_bringup_pkg/package.sh'
+[2.265s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/share/camera_bringup_pkg/package.bash'
+[2.270s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/share/camera_bringup_pkg/package.zsh'
+[2.272s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_bringup_pkg/share/colcon-core/packages/camera_bringup_pkg)
+[4.413s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_interface_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg:/opt/ros/humble /usr/bin/cmake --build /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_interface_pkg -- -j8 -l8
+[4.416s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_interface_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg:/opt/ros/humble /usr/bin/cmake --install /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_interface_pkg
+[4.549s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(camera_interface_pkg)
+[4.550s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg' for CMake module files
+[4.555s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_interface_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg:/opt/ros/humble /usr/bin/cmake --install /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_interface_pkg
+[4.555s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg' for CMake config files
+[4.557s] Level 1:colcon.colcon_core.shell:create_environment_hook('camera_interface_pkg', 'cmake_prefix_path')
+[4.558s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/hook/cmake_prefix_path.ps1'
+[4.559s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/hook/cmake_prefix_path.dsv'
+[4.560s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/hook/cmake_prefix_path.sh'
+[4.561s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/lib'
+[4.562s] Level 1:colcon.colcon_core.shell:create_environment_hook('camera_interface_pkg', 'ld_library_path_lib')
+[4.563s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/hook/ld_library_path_lib.ps1'
+[4.564s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/hook/ld_library_path_lib.dsv'
+[4.565s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/hook/ld_library_path_lib.sh'
+[4.565s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/bin'
+[4.566s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/lib/pkgconfig/camera_interface_pkg.pc'
+[4.566s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/lib/python3.10/site-packages'
+[4.567s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/bin'
+[4.568s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/package.ps1'
+[4.569s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/package.dsv'
+[4.570s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/package.sh'
+[4.571s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/package.bash'
+[4.572s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/package.zsh'
+[4.573s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/colcon-core/packages/camera_interface_pkg)
+[4.575s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(camera_interface_pkg)
+[4.575s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg' for CMake module files
+[4.577s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg' for CMake config files
+[4.578s] Level 1:colcon.colcon_core.shell:create_environment_hook('camera_interface_pkg', 'cmake_prefix_path')
+[4.579s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/hook/cmake_prefix_path.ps1'
+[4.580s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/hook/cmake_prefix_path.dsv'
+[4.581s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/hook/cmake_prefix_path.sh'
+[4.582s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/lib'
+[4.582s] Level 1:colcon.colcon_core.shell:create_environment_hook('camera_interface_pkg', 'ld_library_path_lib')
+[4.583s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/hook/ld_library_path_lib.ps1'
+[4.584s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/hook/ld_library_path_lib.dsv'
+[4.584s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/hook/ld_library_path_lib.sh'
+[4.585s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/bin'
+[4.586s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/lib/pkgconfig/camera_interface_pkg.pc'
+[4.586s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/lib/python3.10/site-packages'
+[4.587s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/bin'
+[4.588s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/package.ps1'
+[4.589s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/package.dsv'
+[4.590s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/package.sh'
+[4.591s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/package.bash'
+[4.592s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/package.zsh'
+[4.593s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/colcon-core/packages/camera_interface_pkg)
+[4.594s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/achintya/Software/ROSPlayground/camera_ws_main/src/camera_main_pkg' with build type 'ament_python'
+[4.594s] Level 1:colcon.colcon_core.shell:create_environment_hook('camera_main_pkg', 'ament_prefix_path')
+[4.595s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/share/camera_main_pkg/hook/ament_prefix_path.ps1'
+[4.597s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/share/camera_main_pkg/hook/ament_prefix_path.dsv'
+[4.598s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/share/camera_main_pkg/hook/ament_prefix_path.sh'
+[4.599s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[4.599s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[5.368s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/achintya/Software/ROSPlayground/camera_ws_main/src/camera_main_pkg'
+[5.369s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[5.369s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[6.569s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/achintya/Software/ROSPlayground/camera_ws_main/src/camera_main_pkg': PYTHONPATH=/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/camera_main_pkg build --build-base /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/build install --record /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/install.log --single-version-externally-managed install_data
+[7.533s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg' for CMake module files
+[7.534s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/achintya/Software/ROSPlayground/camera_ws_main/src/camera_main_pkg' returned '0': PYTHONPATH=/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/camera_main_pkg build --build-base /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/build install --record /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/install.log --single-version-externally-managed install_data
+[7.535s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg' for CMake config files
+[7.536s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib'
+[7.536s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/bin'
+[7.537s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/pkgconfig/camera_main_pkg.pc'
+[7.537s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/python3.10/site-packages'
+[7.537s] Level 1:colcon.colcon_core.shell:create_environment_hook('camera_main_pkg', 'pythonpath')
+[7.538s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/share/camera_main_pkg/hook/pythonpath.ps1'
+[7.539s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/share/camera_main_pkg/hook/pythonpath.dsv'
+[7.540s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/share/camera_main_pkg/hook/pythonpath.sh'
+[7.542s] Level 1:colcon.colcon_core.environment:checking '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/bin'
+[7.542s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(camera_main_pkg)
+[7.543s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/share/camera_main_pkg/package.ps1'
+[7.545s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/share/camera_main_pkg/package.dsv'
+[7.546s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/share/camera_main_pkg/package.sh'
+[7.548s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/share/camera_main_pkg/package.bash'
+[7.549s] INFO:colcon.colcon_core.shell:Creating package script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/share/camera_main_pkg/package.zsh'
+[7.550s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/share/colcon-core/packages/camera_main_pkg)
+[7.550s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[7.552s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[7.552s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[7.552s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[7.565s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[7.566s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[7.566s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[7.635s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[7.636s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/local_setup.ps1'
+[7.651s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/achintya/Software/ROSPlayground/camera_ws_main/install/_local_setup_util_ps1.py'
+[7.665s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/setup.ps1'
+[7.683s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/local_setup.sh'
+[7.685s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/achintya/Software/ROSPlayground/camera_ws_main/install/_local_setup_util_sh.py'
+[7.698s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/setup.sh'
+[7.709s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/local_setup.bash'
+[7.719s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/setup.bash'
+[7.733s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/local_setup.zsh'
+[7.735s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/achintya/Software/ROSPlayground/camera_ws_main/install/setup.zsh'

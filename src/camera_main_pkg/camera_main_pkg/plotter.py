@@ -36,10 +36,9 @@ def plot_coordinates(node):
         ax.set_xlabel('X')
         ax.set_ylabel('Y')
         ax.set_zlabel('Z')
-
-        ax.set_xlim([-2, 2])
-        ax.set_ylim([-2, 2])
-        ax.set_zlim([-2, 2])
+        ax.set_xlim([-3, 3])
+        ax.set_ylim([-3, 3])
+        ax.set_zlim([0, 3])
 
         x_vals = []
         y_vals = []

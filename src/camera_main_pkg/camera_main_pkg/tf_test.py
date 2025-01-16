@@ -18,13 +18,13 @@ class TFListener(Node):
 
     def get_transforms(self):
         try:
-            # Get the transform from base_link to cam_left
-            transform_cam_left = self.tf_buffer.lookup_transform(
-                'cam_left', 'base_link', rclpy.time.Time())
+            # Get the transform from base_link to cam_neg
+            transform_cam_neg = self.tf_buffer.lookup_transform(
+                'cam_neg', 'base_link', rclpy.time.Time())
             
             # Extract quaternion and translation from the transform
-            quat_left = transform_cam_left.transform.rotation
-            translation_left = transform_cam_left.transform.translation
+            quat_left = transform_cam_neg.transform.rotation
+            translation_left = transform_cam_neg.transform.translation
 
             # Convert quaternion to RPY (roll, pitch, yaw)
             rpy_left = tf_transformations.euler_from_quaternion(

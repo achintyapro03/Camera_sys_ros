@@ -30,11 +30,11 @@ float finalAngles[numSteppers];
 
 AccelStepper steppers[numSteppers] = {
   AccelStepper(AccelStepper::DRIVER, 9, 8), // base stepper
-  AccelStepper(AccelStepper::DRIVER, 13, 12),   // left stepper
-  AccelStepper(AccelStepper::DRIVER, 5, 4),   // right stepper
+  AccelStepper(AccelStepper::DRIVER, 5, 4),   // neg stepper
+  AccelStepper(AccelStepper::DRIVER, 13, 12),   // pos stepper
 };
 
-const int stepsPerRevolution[numSteppers] = {800, 1600, 1600};
+const int stepsPerRevolution[numSteppers] = {800, 3200, 3200};
 float degreesToSteps[numSteppers];
 const int maxSpeeds[numSteppers] = {3950, 3950, 3950};
 const int accelerations[numSteppers] = {3950, 3950, 3950};
@@ -42,9 +42,9 @@ int maxSteps[numSteppers];
 unsigned long previousTime = 0;
 const long interval = 50;
 
-double kp[numSteppers] = {3, 0.15, 0.15};
+double kp[numSteppers] = {3, 0.3, 0.3};
 double ki[numSteppers] = {0, 0, 0};
-double kd[numSteppers] = {0, 0., 0};
+double kd[numSteppers] = {0, 0, 0};
 
 double setpoints[numSteppers + 1] = {0, 0, 0, 1};
 double input[numSteppers];
@@ -69,13 +69,11 @@ void tcaselect(uint8_t i) {
 }
 
 void writeToStream(){
-  for (int i = 0; i < numSteppers; i++) {
-    if(i == 0) Serial.print(pitch);
-    else Serial.print(finalAngles[i]);
-    if (i < numSteppers - 1) {
-      Serial.print(",");
-    }
-  }
+  Serial.print(pitch);
+  Serial.print(",");
+  Serial.print(finalAngles[2]);
+  Serial.print(",");
+  Serial.print(finalAngles[1]);
   Serial.println();
 }
 
@@ -145,7 +143,7 @@ void setup() {
   Wire.write(0); // set to zero (wakes up the MPU-6050)
   Wire.endTransmission(true);
 
-  int speeds[3] = {1000, 200, 200};
+  int speeds[3] = {1000, 500, 500};
   for (int i = 0; i < numSteppers; i++) {
     degreesToSteps[i] = stepsPerRevolution[i] / 360.0;
     maxSteps[i] = degreesToSteps[i] * 180;
@@ -212,41 +210,41 @@ void loop() {
     readFromStream();
   }  
 
-  int cal_speed[3] = {0, 50, 50};
 
-  float start[3] = {0, 0, 0};
-  if(int(setpoints[3]) == 4){
-    setpoints[3] = 2;
-    if(!caliberation_done) {
-      caliberation_done = true;
-      Serial.println("6969");  
-      return;
-    };
-    for(int i = 0; i < numSteppers; i++){
-      setpoints[i] = 0;
-      degAngles[i] = start[i];
-      correctedAngles[i] = start[i];
-      numberOfTurns[i] = 0;
-      totalAngles[i] = (numberOfTurns[i] * 360) + correctedAngles[i];
-      finalAngles[i] = totalAngles[i];
-    }
+  // float start[3] = {0, 0, 0};
+  // if(int(setpoints[3]) == 4){
+  //   setpoints[3] = 2;
+  //   if(!caliberation_done) {
+  //     caliberation_done = true;
+  //     Serial.println("6969");  
+  //     return;
+  //   };
+  //   for(int i = 0; i < numSteppers; i++){
+  //     setpoints[i] = 0;
+  //     degAngles[i] = start[i];
+  //     correctedAngles[i] = start[i];
+  //     numberOfTurns[i] = 0;
+  //     totalAngles[i] = (numberOfTurns[i] * 360) + correctedAngles[i];
+  //     finalAngles[i] = totalAngles[i];
+  //   }
 
-  steppers[1].setCurrentPosition(0);
-  steppers[2].setCurrentPosition(0); 
+  // steppers[1].setCurrentPosition(0);
+  // steppers[2].setCurrentPosition(0); 
 
-  float desiredAngles[numSteppers] = {0.0, 90.0, -90.0};
+  // float desiredAngles[numSteppers] = {0.0, 90.0, -90.0};
 
-    for (int i = 1; i < numSteppers; i++) { 
-      int steps = (desiredAngles[i] / 360.0) * stepsPerRevolution[i];
-      // steppers[i].moveTo(steps); 
-      steppers[i].runToNewPosition(steps);
-    }
-    Serial.println("6969");
-    delay(1000);
-    return;
-  }
+  //   for (int i = 1; i < numSteppers; i++) { 
+  //     int steps = (desiredAngles[i] / 360.0) * stepsPerRevolution[i];
+  //     // steppers[i].moveTo(steps); 
+  //     steppers[i].runToNewPosition(steps);
+  //   }
+  //   Serial.println("6969");
+  //   delay(1000);
+  //   return;
+  // }
   // Serial.println("hi2");
 
+  int cal_speed[3] = {0, 50, 50};
   for (int i = 0; i < numSteppers; i++) {
     updateSensorData(i);
 
@@ -265,6 +263,11 @@ void loop() {
     computePID(i, delta);
   }
 
+  
+  if(int(setpoints[3]) == 2){
+    steppers[1].setSpeed(500);
+    steppers[2].setSpeed(500);
+  }
   currentTime = millis();
   if (currentTime - previousTime >= interval) {
     previousTime = currentTime;
