@@ -50,7 +50,7 @@ double setpoints[numSteppers + 1] = {0, 0, 0, 1};
 double input[numSteppers];
 double output[numSteppers];
 
-int sensorPin[3] = {3, 7, 6};
+int sensorPin[3] = {3, 6, 7};
 
 double integral[numSteppers] = {0, 0, 0};
 double previousError[numSteppers] = {0, 0, 0};
@@ -71,9 +71,9 @@ void tcaselect(uint8_t i) {
 void writeToStream(){
   Serial.print(pitch);
   Serial.print(",");
-  Serial.print(finalAngles[2]);
-  Serial.print(",");
   Serial.print(finalAngles[1]);
+  Serial.print(",");
+  Serial.print(finalAngles[2]);
   Serial.println();
 }
 

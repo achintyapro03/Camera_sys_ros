@@ -38,14 +38,14 @@
   <joint name="cam_neg_yaw" type="revolute">
     <parent link="h_rod"/>
     <child link="cam_neg"/>
-    <origin rpy="0 0 0" xyz="-0.08125 0 0.04"/>
+    <origin rpy="0 0 0" xyz="0.08125 0 0.04"/>
     <axis xyz="0 0 1"/>
     <limit effort="10" lower="-3.14" upper="3.14" velocity="1"/>
   </joint>
   <joint name="cam_pos_yaw" type="revolute">
     <parent link="h_rod"/>
     <child link="cam_pos"/>
-    <origin rpy="0 0 0" xyz="0.08125 0 0.04"/>
+    <origin rpy="0 0 0" xyz="-0.08125 0 0.04"/>
     <axis xyz="0 0 1"/>
     <limit effort="10" lower="-3.14" upper="3.14" velocity="1"/>
   </joint>

@@ -36,17 +36,15 @@ def plot_coordinates(node):
         ax.set_xlabel('X')
         ax.set_ylabel('Y')
         ax.set_zlabel('Z')
-        ax.set_xlim([-3, 3])
-        ax.set_ylim([-3, 3])
-        ax.set_zlim([0, 3])
+        ax.set_xlim([-3, 1])
+        ax.set_ylim([-3, 1])
+        ax.set_zlim([-3, 1])
 
         x_vals = []
         y_vals = []
         z_vals = []
         id_map = {}
 
-        # print(node.coordinates)
-        
         # Map node IDs to their coordinates
         for coord in node.coordinates:
             x_vals.append(coord.x)
@@ -54,8 +52,12 @@ def plot_coordinates(node):
             z_vals.append(coord.z)
             id_map[coord.node_id] = (coord.x, coord.y, coord.z)
 
-        # Plot nodes
-        ax.scatter(x_vals, y_vals, z_vals, c='r', marker='o', label='Nodes')
+        # Plot nodes with specific coloring
+        for i, coord in enumerate(node.coordinates):
+            if coord.node_id == 0:
+                ax.scatter(coord.x, coord.y, coord.z, c='orange', marker='o', label='Head')
+            else:
+                ax.scatter(coord.x, coord.y, coord.z, c='r', marker='o')
 
         # Plot edges only if both nodes are present
         for edge in edge_list:

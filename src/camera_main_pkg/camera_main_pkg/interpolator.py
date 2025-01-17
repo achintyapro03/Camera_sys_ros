@@ -34,8 +34,8 @@ K = np.array([
 
 dist = np.array([0, 0, 0, 0, 0], dtype=float)
 
-# mp_keypoints = [0, 11, 12, 13, 14, 15, 16]
-mp_keypoints = [0, 11, 12]
+mp_keypoints = [0, 11, 12, 13, 14, 15, 16]
+# mp_keypoints = [0, 11, 12]
 
 
 class CameraState():
@@ -128,13 +128,13 @@ class InterpolatorNode(Node):
 
     def set_calibration_neg_callback(self, request, response):
         self.cam_neg.calibrated = request.calibrated
-        self.cam_neg.offset[0] = self.cam_neg.angles[0] + 90
+        self.cam_neg.offset[0] = self.cam_neg.angles[0] - 90
         response.success = True
         return response
 
     def set_calibration_right_callback(self, request, response):
         self.cam_pos.calibrated = request.calibrated
-        self.cam_pos.offset[0] = self.cam_pos.angles[0] - 90
+        self.cam_pos.offset[0] = self.cam_pos.angles[0] + 90
         response.success = True
         return response
 
