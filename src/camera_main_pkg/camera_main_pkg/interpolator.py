@@ -34,7 +34,7 @@ K = np.array([
 
 dist = np.array([0, 0, 0, 0, 0], dtype=float)
 
-mp_keypoints = [0, 11, 12, 13, 14, 15, 16]
+mp_keypoints = [0, 11, 12, 13, 14, 15, 16, 24, 23]
 # mp_keypoints = [0, 11, 12]
 
 

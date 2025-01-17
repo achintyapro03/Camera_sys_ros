@@ -6,7 +6,7 @@ from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.animation import FuncAnimation
 import threading
 
-edge_list = [[0, 11], [0, 12], [11, 12], [11, 13], [12, 14], [13, 15], [14, 16]]
+edge_list = [[0, 11], [0, 12], [11, 12], [11, 13], [12, 14], [13, 15], [14, 16], [12, 24], [11, 23], [24, 23], [24, 26], [23, 25]]
 # [0, 11, 12, 13, 14, 15, 16]
 
 class PlotterNode(Node):
@@ -24,11 +24,13 @@ class PlotterNode(Node):
         self.coordinates = msg.coordinates_list
         # self.get_logger().info(self.coordinates)
 
-
-
 def plot_coordinates(node):
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
+
+    # Define maximum and minimum thresholds for the axes
+    MAX_THRESHOLD = 10
+    MIN_THRESHOLD = -10
 
     def update(frame):
         ax.clear()
@@ -36,9 +38,6 @@ def plot_coordinates(node):
         ax.set_xlabel('X')
         ax.set_ylabel('Y')
         ax.set_zlabel('Z')
-        ax.set_xlim([-3, 1])
-        ax.set_ylim([-3, 1])
-        ax.set_zlim([-3, 1])
 
         x_vals = []
         y_vals = []
@@ -51,6 +50,16 @@ def plot_coordinates(node):
             y_vals.append(coord.y)
             z_vals.append(coord.z)
             id_map[coord.node_id] = (coord.x, coord.y, coord.z)
+
+        # Auto-adjust axis limits with thresholds
+        if x_vals and y_vals and z_vals:
+            x_min, x_max = max(min(x_vals) - 1, MIN_THRESHOLD), min(max(x_vals) + 1, MAX_THRESHOLD)
+            y_min, y_max = max(min(y_vals) - 1, MIN_THRESHOLD), min(max(y_vals) + 1, MAX_THRESHOLD)
+            z_min, z_max = max(min(z_vals) - 1, MIN_THRESHOLD), min(max(z_vals) + 1, MAX_THRESHOLD)
+
+            ax.set_xlim([x_min, x_max])
+            ax.set_ylim([y_min, y_max])
+            ax.set_zlim([z_min, z_max])
 
         # Plot nodes with specific coloring
         for i, coord in enumerate(node.coordinates):
@@ -74,6 +83,7 @@ def plot_coordinates(node):
 
     ani = FuncAnimation(fig, update, interval=100)
     plt.show()
+
 
 def ros_thread(node):
     rclpy.spin(node)
