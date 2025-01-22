@@ -34,8 +34,9 @@ K = np.array([
 
 dist = np.array([0, 0, 0, 0, 0], dtype=float)
 
-mp_keypoints = [0, 11, 12, 13, 14, 15, 16, 24, 23]
+# mp_keypoints = [0, 11, 12, 13, 14, 15, 16, 24, 23]
 # mp_keypoints = [0, 11, 12]
+mp_keypoints = [0, 11, 12]
 
 
 class CameraState():
@@ -241,7 +242,7 @@ class InterpolatorNode(Node):
                     x = -1;
                 data = f"{(x * int(r.y + l.y) // 2)},{int(l.x)},{int(r.x)},{self.mode}\n"
                 self.ser.write(data.encode())
-                self.get_logger().info(f"{data}")
+                # self.get_logger().info(f"{data}")
 
         except Exception as e:
             self.get_logger().info(f"{e}")  

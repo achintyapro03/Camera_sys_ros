@@ -105,7 +105,7 @@ class CameraNode(Node):
         cv2.destroyWindow(f'Frame {self.cam_id}')
 
     def track_person(self):
-        with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5, model_complexity=2, smooth_landmarks=True) as pose:
+        with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5, model_complexity=1, smooth_landmarks=True) as pose:
             while self.cap.isOpened() and self.running:
 
                 ret, frame = self.cap.read()

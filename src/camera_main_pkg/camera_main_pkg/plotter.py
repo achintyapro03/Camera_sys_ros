@@ -81,7 +81,7 @@ def plot_coordinates(node):
 
         ax.legend()
 
-    ani = FuncAnimation(fig, update, interval=100)
+    ani = FuncAnimation(fig, update, interval=10)
     plt.show()
 
 
