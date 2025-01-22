@@ -16,12 +16,11 @@ from scipy import linalg
 from copy import deepcopy
 
 
-camera_width = 1280.0
-camera_height = 960.0
-fx = 1430.0
-fy = 1430.0
-cx = 480.0
-cy = 620.0
+
+fx = 2860.0
+fy = 2860.0
+cx = 320.0
+cy = 240.0
 
 frame_shape_x = 640
 frame_shape_y = 480
@@ -36,7 +35,7 @@ dist = np.array([0, 0, 0, 0, 0], dtype=float)
 
 # mp_keypoints = [0, 11, 12, 13, 14, 15, 16, 24, 23]
 # mp_keypoints = [0, 11, 12]
-mp_keypoints = [0, 11, 12]
+mp_keypoints = [0, 11, 12, 13, 14, 15, 16, 23, 24, 25, 26]
 
 
 class CameraState():
@@ -141,8 +140,8 @@ class InterpolatorNode(Node):
 
     def get_transforms(self):
         try:
-            self.cam_neg.M, self.cam_neg.R, self.cam_neg.t = self.process_transform('cam_neg')
-            self.cam_pos.M, self.cam_pos.R, self.cam_pos.t = self.process_transform('cam_pos')
+            self.cam_neg.M, self.cam_neg.R, self.cam_neg.t, r1, p1, y1 = self.process_transform('cam_neg')
+            self.cam_pos.M, self.cam_pos.R, self.cam_pos.t, r2, p2, y2 = self.process_transform('cam_pos')
 
             # Format the translation vectors to 2 decimal places
             neg_t_formatted = f"[{self.cam_neg.t.x:.2f}, {self.cam_neg.t.y:.2f}, {self.cam_neg.t.z:.2f}]"
@@ -152,30 +151,53 @@ class InterpolatorNode(Node):
             neg_R_formatted = "\n".join(["[" + ", ".join([f"{value:.2f}" for value in row]) + "]" for row in self.cam_neg.R])
             pos_R_formatted = "\n".join(["[" + ", ".join([f"{value:.2f}" for value in row]) + "]" for row in self.cam_pos.R])
 
-            # Log the information
-            self.get_logger().info(f"Camera neg:\nTranslation: {neg_t_formatted}\nRotation:\n{neg_R_formatted}")
-            self.get_logger().info(f"Camera pos:\nTranslation: {pos_t_formatted}\nRotation:\n{pos_R_formatted}")
+            # Format roll, pitch, and yaw to 2 decimal places
+            neg_rpy_formatted = f"Roll: {math.degrees(r1):.2f}°, Pitch: {math.degrees(p1):.2f}°, Yaw: {math.degrees(y1):.2f}°"
+            pos_rpy_formatted = f"Roll: {math.degrees(r2):.2f}°, Pitch: {math.degrees(p2):.2f}°, Yaw: {math.degrees(y2):.2f}°"
 
+            # self.cam_neg.t.x = self.cam_neg.t.x * 10
+            # self.cam_pos.t.x = self.cam_pos.t.x * 10
+
+            # Log the information
+            # self.get_logger().info(f"Camera neg:\nTranslation: {neg_t_formatted}\nRotation:\n{neg_R_formatted}\nRPY: {neg_rpy_formatted}")
+            # self.get_logger().info(f"Camera pos:\nTranslation: {pos_t_formatted}\nRotation:\n{pos_R_formatted}\nRPY: {pos_rpy_formatted}")
             
         except (LookupException, ConnectivityException, ExtrapolationException) as e:
             self.get_logger().error(f"Failed to get transform: {e}")
 
-
     def process_transform(self, cam_name):
+        # Lookup transform
         transform = self.tf_buffer.lookup_transform('base_link', cam_name, rclpy.time.Time())
         quat = transform.transform.rotation
         translation = transform.transform.translation
 
+        # Convert quaternion to rotation matrix
         rotation_matrix = tf_transformations.quaternion_matrix([quat.x, quat.y, quat.z, quat.w])
+        rotation_matrix_3x3 = rotation_matrix[:3, :3]
 
+        # Create full transform matrix
         transform_matrix = rotation_matrix
         transform_matrix[0][3] = translation.x
         transform_matrix[1][3] = translation.y
         transform_matrix[2][3] = translation.z
 
-        rotation_matrix_3x3 = rotation_matrix[:3, :3]
+        # Compute roll, pitch, yaw from the 3x3 rotation matrix
+        r11, r12, r13 = rotation_matrix_3x3[0]
+        r21, r22, r23 = rotation_matrix_3x3[1]
+        r31, r32, r33 = rotation_matrix_3x3[2]
 
-        return transform_matrix, rotation_matrix_3x3, translation
+        # Roll (rotation around x-axis)
+        roll = math.atan2(r32, r33)
+
+        # Pitch (rotation around y-axis)
+        pitch = math.atan2(-r31, math.sqrt(r32**2 + r33**2))
+
+        # Yaw (rotation around z-axis)
+        yaw = math.atan2(r21, r11)
+
+        # Return results
+        return transform_matrix, rotation_matrix_3x3, translation, roll, pitch, yaw
+
 
     def temp_callback(self, msg):
         self.temp = msg.data
@@ -223,15 +245,21 @@ class InterpolatorNode(Node):
             if self.cam_neg.points_list and self.cam_pos.points_list:
                 l = deepcopy(self.cam_neg.points_list[0]) 
                 r = deepcopy(self.cam_pos.points_list[0])
-
+                
                 if l.x > 6000:
                     l.x = 6969.0
                 else:
-                    l.x = l.x - 0.5 * frame_shape_x
+                    if(self.mode == 1):
+                        l.x = l.x - 0.5 * frame_shape_x
+                    else:
+                        l.x = l.x - 0.7 * frame_shape_x
                 if r.x > 6000:
                     r.x = 6969.0
                 else:
-                    r.x = r.x - 0.5 * frame_shape_x
+                    if(self.mode == 1):
+                        r.x = r.x - 0.5 * frame_shape_x
+                    else:
+                        r.x = r.x - 0.3 * frame_shape_x
 
                 l.y = l.y - 0.2 * frame_shape_y 
                 r.y = r.y - 0.2 * frame_shape_y 

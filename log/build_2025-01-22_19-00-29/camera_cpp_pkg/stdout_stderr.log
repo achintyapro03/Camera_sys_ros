@@ -1,0 +1,16 @@
+-- Install configuration: ""
+-- Installing: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/ament_index/resource_index/package_run_dependencies/camera_cpp_pkg
+-- Installing: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/ament_index/resource_index/parent_prefix_path/camera_cpp_pkg
+-- Installing: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/environment/ament_prefix_path.sh
+-- Installing: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/environment/ament_prefix_path.dsv
+-- Installing: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/environment/path.sh
+-- Installing: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/environment/path.dsv
+-- Installing: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/local_setup.bash
+-- Installing: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/local_setup.sh
+-- Installing: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/local_setup.zsh
+-- Installing: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/local_setup.dsv
+-- Installing: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/package.dsv
+-- Installing: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/ament_index/resource_index/packages/camera_cpp_pkg
+-- Installing: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/cmake/camera_cpp_pkgConfig.cmake
+-- Installing: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/cmake/camera_cpp_pkgConfig-version.cmake
+-- Installing: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_cpp_pkg/share/camera_cpp_pkg/package.xml

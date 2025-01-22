@@ -1,0 +1,209 @@
+import rclpy
+from rclpy.node import Node
+from camera_interface_pkg.msg import PointsList, Points
+from camera_interface_pkg.srv import SetCalibration
+import cv2
+from cv2 import aruco
+import mediapipe as mp
+from mediapipe.python.solutions import pose as mp_pose
+from mediapipe.python.solutions import drawing_utils as mp_drawing
+
+frame_shape = [480, 640]
+
+mp_keypoints = [0, 11, 12, 13, 14, 15, 16, 24, 23]
+
+class CameraNode(Node):
+    def __init__(self):
+        super().__init__('video_processor')
+
+        # Declare and get parameters
+        self.declare_parameter('camera_id', 0)
+        self.declare_parameter('camera_name', 'camera')
+        self.declare_parameter('starting_mode', 3)
+
+        self.cam_id = self.get_parameter('camera_id').get_parameter_value().integer_value
+        self.cam_name = self.get_parameter('camera_name').get_parameter_value().string_value
+        self.starting_mode = self.get_parameter('starting_mode').get_parameter_value().integer_value
+
+        self.calibrated = False  # Initially set to False
+        self.points_list = []
+        # self.cap = cv2.VideoCapture(self.cam_id, cv2.CAP_DSHOW)
+        self.cap = cv2.VideoCapture(self.cam_id)
+
+        self.cap.set(3, frame_shape[1])
+        self.cap.set(4, frame_shape[0])
+        self.running = True
+
+        self.client = self.create_client(SetCalibration, f'{self.cam_name}/set_calibration')
+        self.request = SetCalibration.Request()
+
+        # Publisher for points_list
+        self.points_publisher = self.create_publisher(PointsList, f'{self.cam_name}/points_list', 10)
+        self.get_logger().warning(f"node started_hhhoo")
+        self.run()
+
+    def call_calibration_service(self, calibrated):
+        self.request.calibrated = calibrated
+        future = self.client.call_async(self.request)
+
+        # Callback to handle the response
+        future.add_done_callback(self.callback)
+
+    def callback(self, future):
+        try:
+            response = future.result()
+            self.get_logger().info(f'Service response: success={response.success}')
+        except Exception as e:
+            self.get_logger().error(f'Service call failed: {e}')
+
+    def publish_points_list(self):
+        msg = PointsList()
+        # Convert the points list into a list of Points messages
+        msg.points_list = [Points(x=float(point[0]), y=float(point[1])) for point in self.points_list]
+
+        # self.get_logger().info(f"Points List: {msg.points_list}")
+        self.points_publisher.publish(msg)
+
+    def find_aruco(self):
+        while not self.calibrated:  # Check if calibration is done
+            ret, frame = self.cap.read()
+            if not ret:
+                self.get_logger().error("Failed to grab frame")
+                break
+
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            aruco_dict = aruco.Dictionary_get(aruco.DICT_6X6_250)
+            parameters = aruco.DetectorParameters_create()
+            corners, ids, _ = aruco.detectMarkers(gray, aruco_dict, parameters=parameters)
+            frame_markers = aruco.drawDetectedMarkers(frame.copy(), corners, ids)
+
+            flag = False
+            # self.get_logger().error(f'{frame.shape}')
+
+            if ids is not None:
+                self.points_list.clear()
+                for i in range(len(ids)):
+                    if ids[i] == 3:
+                        flag = True
+                        c = corners[i][0]
+                        center_x = int(c[:, 0].mean())
+                        center_y = int(c[:, 1].mean())
+                        x_diff = int(center_x)
+                        if abs(x_diff - 320) == 0:
+                            self.calibrated = True  # Set the camera as calibrated if condition met
+                            self.call_calibration_service(True)
+                        self.points_list.append([x_diff, 0])
+                        break
+                if(not flag):
+                    self.points_list.clear()
+                    self.points_list.append([6969, 6969])
+            else:
+                self.points_list.clear()
+                self.points_list.append([6969, 6969])
+
+            # Publish the points list
+            self.publish_points_list()
+            cv2.imshow(f'Frame {self.cam_id}', frame_markers)
+            if cv2.waitKey(10) & 0xFF == ord('q'):
+                self.running = False
+                break
+
+        cv2.destroyWindow(f'Frame {self.cam_id}')
+
+    def track_person(self):
+        # with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5, model_complexity=1, smooth_landmarks=True) as pose:
+        with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as pose:    
+            while self.cap.isOpened() and self.running:
+
+                ret, frame = self.cap.read()
+                
+                if not ret:
+                    break
+
+                image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                image.flags.writeable = False
+                results = pose.process(image)
+                image.flags.writeable = True
+                image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+                
+                frame_keypoints = []
+                if results.pose_landmarks:
+                    self.points_list.clear()
+                    for i, landmark in enumerate(results.pose_landmarks.landmark):
+                        if i not in mp_keypoints: continue #only save keypoints that are indicated in mp_keypoints
+                        pxl_x = landmark.x * frame.shape[1]
+                        pxl_y = landmark.y * frame.shape[0]
+                        pxl_x = int(round(pxl_x))
+                        pxl_y = int(round(pxl_y))
+
+                        cv2.circle(frame,(pxl_x, pxl_y), 3, (0,0,255), -1) #add keypoint detection points into figure
+
+                        self.points_list.append([pxl_x, pxl_y])
+
+                cv2.imshow(f'Mediapipe Feed - {self.cam_name}', image)
+                self.publish_points_list()
+
+                if cv2.waitKey(10) & 0xFF == ord('q'):
+                    self.running = False
+                    break
+            cv2.destroyWindow(f'Mediapipe Feed - {self.cam_name}')
+
+    def track_multi_aruco(self, tracking_id):
+        while self.running:
+            ret, frame = self.cap.read()
+            if not ret:
+                self.get_logger().error("Failed to grab frame")
+                break
+
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            aruco_dict = aruco.Dictionary_get(aruco.DICT_6X6_250)
+            parameters = aruco.DetectorParameters_create()
+            corners, ids, _ = aruco.detectMarkers(gray, aruco_dict, parameters=parameters)
+            frame_markers = aruco.drawDetectedMarkers(frame.copy(), corners, ids)
+
+            if ids is not None:
+                self.points_list.clear()
+                for i in range(len(ids)):
+                    c = corners[i][0]
+                    center_x = int(c[:, 0].mean())
+                    center_y = int(c[:, 1].mean())
+                    if ids[i] == tracking_id:
+                        x_diff = int(center_x - frame.shape[1] / 2.0)
+                        y_diff = int(center_y - frame.shape[0] / 2.0)
+                        self.points_list.append([x_diff, y_diff])
+            else:
+                self.points_list.clear()
+                self.points_list.append([6969, 6969])
+
+            # Publish the points list
+            self.publish_points_list()
+            cv2.imshow(f'MultiAruco {self.cam_id}', frame_markers)
+            if cv2.waitKey(10) & 0xFF == ord('q'):
+                self.running = False
+                break
+
+        cv2.destroyWindow(f'MultiAruco {self.cam_id}')
+
+    def run(self):
+        if self.starting_mode == 1:
+            self.find_aruco()
+        # elif self.starting_mode == 2:
+        #     self.find_aruco()
+        #     tracking_id = int(input("Enter id of aruco to be tracked: "))
+        #     self.track_multi_aruco(tracking_id)
+        # elif self.starting_mode == 3:
+        self.track_person()
+
+        self.cap.release()
+
+
+def main(args=None):
+    rclpy.init(args=args)
+    camera_node = CameraNode()
+    rclpy.spin(camera_node)
+    camera_node.destroy_node()
+    rclpy.shutdown()
+
+
+if __name__ == '__main__':
+    main()

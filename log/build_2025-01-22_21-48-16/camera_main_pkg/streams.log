@@ -1,0 +1,31 @@
+[1.404s] Invoking command in '/home/achintya/Software/ROSPlayground/camera_ws_main/src/camera_main_pkg': PYTHONPATH=/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/camera_main_pkg build --build-base /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/build install --record /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/install.log --single-version-externally-managed install_data
+[2.014s] running egg_info
+[2.015s] writing ../../build/camera_main_pkg/camera_main_pkg.egg-info/PKG-INFO
+[2.015s] writing dependency_links to ../../build/camera_main_pkg/camera_main_pkg.egg-info/dependency_links.txt
+[2.015s] writing entry points to ../../build/camera_main_pkg/camera_main_pkg.egg-info/entry_points.txt
+[2.015s] writing requirements to ../../build/camera_main_pkg/camera_main_pkg.egg-info/requires.txt
+[2.015s] writing top-level names to ../../build/camera_main_pkg/camera_main_pkg.egg-info/top_level.txt
+[2.019s] reading manifest file '../../build/camera_main_pkg/camera_main_pkg.egg-info/SOURCES.txt'
+[2.021s] writing manifest file '../../build/camera_main_pkg/camera_main_pkg.egg-info/SOURCES.txt'
+[2.022s] running build
+[2.022s] running build_py
+[2.022s] copying camera_main_pkg/plotter.py -> /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/build/lib/camera_main_pkg
+[2.023s] copying camera_main_pkg/interpolator.py -> /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/build/lib/camera_main_pkg
+[2.023s] running install
+[2.023s] running install_lib
+[2.024s] copying /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/build/lib/camera_main_pkg/plotter.py -> /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/python3.10/site-packages/camera_main_pkg
+[2.026s] copying /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/build/lib/camera_main_pkg/interpolator.py -> /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/python3.10/site-packages/camera_main_pkg
+[2.027s] byte-compiling /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/python3.10/site-packages/camera_main_pkg/plotter.py to plotter.cpython-310.pyc
+[2.030s] byte-compiling /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/python3.10/site-packages/camera_main_pkg/interpolator.py to interpolator.cpython-310.pyc
+[2.035s] running install_data
+[2.035s] running install_egg_info
+[2.043s] removing '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/python3.10/site-packages/camera_main_pkg-0.1.0-py3.10.egg-info' (and everything under it)
+[2.043s] Copying ../../build/camera_main_pkg/camera_main_pkg.egg-info to /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/python3.10/site-packages/camera_main_pkg-0.1.0-py3.10.egg-info
+[2.044s] running install_scripts
+[2.077s] Installing controller script to /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/camera_main_pkg
+[2.078s] Installing interpolator script to /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/camera_main_pkg
+[2.078s] Installing plotter script to /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/camera_main_pkg
+[2.078s] Installing tf_test script to /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/camera_main_pkg
+[2.078s] Installing video_processor script to /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/camera_main_pkg
+[2.082s] writing list of installed files to '/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/install.log'
+[2.130s] Invoked command in '/home/achintya/Software/ROSPlayground/camera_ws_main/src/camera_main_pkg' returned '0': PYTHONPATH=/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/camera_main_pkg build --build-base /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/build install --record /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_main_pkg/install.log --single-version-externally-managed install_data
