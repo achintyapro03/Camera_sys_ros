@@ -53,9 +53,9 @@ def plot_coordinates(node):
 
         # Auto-adjust axis limits with thresholds
         if x_vals and y_vals and z_vals:
-            x_min, x_max = max(min(x_vals) - 0.3, MIN_THRESHOLD), min(max(x_vals) + 0.3, MAX_THRESHOLD)
-            y_min, y_max = max(min(y_vals) - 0.3, MIN_THRESHOLD), min(max(y_vals) + 0.3, MAX_THRESHOLD)
-            z_min, z_max = max(min(z_vals) - 0.3, MIN_THRESHOLD), min(max(z_vals) + 0.3, MAX_THRESHOLD)
+            x_min, x_max = max(min(x_vals) - 0.1, MIN_THRESHOLD), min(max(x_vals) + 0.1, MAX_THRESHOLD)
+            y_min, y_max = max(min(y_vals) - 0.1, MIN_THRESHOLD), min(max(y_vals) + 0.1, MAX_THRESHOLD)
+            z_min, z_max = max(min(z_vals) - 0.1, MIN_THRESHOLD), min(max(z_vals) + 0.1, MAX_THRESHOLD)
 
             ax.set_xlim([x_min, x_max])
             ax.set_ylim([y_min, y_max])

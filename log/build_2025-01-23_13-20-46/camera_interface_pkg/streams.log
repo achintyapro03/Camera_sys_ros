@@ -1,0 +1,284 @@
+[0.034s] Invoking command in '/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_interface_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg:/opt/ros/humble /usr/bin/cmake --build /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_interface_pkg -- -j8 -l8
+[0.184s] [ 11%] Built target camera_interface_pkg__rosidl_generator_c
+[0.187s] [ 12%] Built target camera_interface_pkg__cpp
+[0.265s] [ 12%] Built target ament_cmake_python_copy_camera_interface_pkg
+[0.322s] [ 24%] Built target camera_interface_pkg__rosidl_typesupport_fastrtps_cpp
+[0.322s] [ 35%] Built target camera_interface_pkg__rosidl_typesupport_fastrtps_c
+[0.322s] [ 46%] Built target camera_interface_pkg__rosidl_typesupport_c
+[0.322s] [ 58%] Built target camera_interface_pkg__rosidl_typesupport_introspection_c
+[0.341s] [ 69%] Built target camera_interface_pkg__rosidl_typesupport_cpp
+[0.354s] [ 81%] Built target camera_interface_pkg__rosidl_typesupport_introspection_cpp
+[0.409s] [ 81%] Built target camera_interface_pkg
+[0.465s] [ 82%] Built target camera_interface_pkg__py
+[0.538s] [ 92%] Built target camera_interface_pkg__rosidl_generator_py
+[0.606s] [ 94%] Built target camera_interface_pkg__rosidl_typesupport_introspection_c__pyext
+[0.614s] [ 97%] Built target camera_interface_pkg__rosidl_typesupport_fastrtps_c__pyext
+[0.615s] [100%] Built target camera_interface_pkg__rosidl_typesupport_c__pyext
+[1.100s] running egg_info
+[1.101s] writing camera_interface_pkg.egg-info/PKG-INFO
+[1.101s] writing dependency_links to camera_interface_pkg.egg-info/dependency_links.txt
+[1.101s] writing top-level names to camera_interface_pkg.egg-info/top_level.txt
+[1.106s] reading manifest file 'camera_interface_pkg.egg-info/SOURCES.txt'
+[1.108s] writing manifest file 'camera_interface_pkg.egg-info/SOURCES.txt'
+[1.167s] [100%] Built target ament_cmake_python_build_camera_interface_pkg_egg
+[1.184s] Invoked command in '/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_interface_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg:/opt/ros/humble /usr/bin/cmake --build /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_interface_pkg -- -j8 -l8
+[1.193s] Invoking command in '/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_interface_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg:/opt/ros/humble /usr/bin/cmake --install /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_interface_pkg
+[1.203s] -- Install configuration: ""
+[1.203s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/ament_index/resource_index/rosidl_interfaces/camera_interface_pkg
+[1.203s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg
+[1.204s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv
+[1.204s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail
+[1.204s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/update_n20_set_points__functions.h
+[1.204s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/set_calibration__functions.h
+[1.205s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/update_n20_set_points__struct.h
+[1.205s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/set_calibration__functions.c
+[1.205s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/update_n20_set_points__type_support.h
+[1.205s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/set_calibration__type_support.h
+[1.206s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/set_calibration__struct.h
+[1.206s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/update_n20_set_points__functions.c
+[1.206s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/update_n20_set_points.h
+[1.206s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/set_calibration.h
+[1.207s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg
+[1.207s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail
+[1.207s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points_list__functions.c
+[1.207s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points_list__type_support.h
+[1.207s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates_list__functions.h
+[1.207s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points_list__functions.h
+[1.207s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates_list__type_support.h
+[1.208s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points__struct.h
+[1.208s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates__type_support.h
+[1.208s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/robot_state__functions.h
+[1.208s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/robot_state__functions.c
+[1.208s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates_list__functions.c
+[1.209s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates__struct.h
+[1.209s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points__functions.c
+[1.209s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/robot_state__type_support.h
+[1.209s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates_list__struct.h
+[1.210s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates__functions.c
+[1.210s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points__type_support.h
+[1.210s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/robot_state__struct.h
+[1.210s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates__functions.h
+[1.210s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points__functions.h
+[1.210s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points_list__struct.h
+[1.210s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/points.h
+[1.211s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/points_list.h
+[1.211s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/robot_state.h
+[1.211s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/coordinates_list.h
+[1.211s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/rosidl_generator_c__visibility_control.h
+[1.211s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/coordinates.h
+[1.211s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/environment/library_path.sh
+[1.212s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/environment/library_path.dsv
+[1.212s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/lib/libcamera_interface_pkg__rosidl_generator_c.so
+[1.212s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg
+[1.213s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv
+[1.213s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail
+[1.213s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/update_n20_set_points__rosidl_typesupport_fastrtps_c.h
+[1.213s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/set_calibration__rosidl_typesupport_fastrtps_c.h
+[1.214s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg
+[1.214s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[1.214s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail
+[1.214s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points_list__rosidl_typesupport_fastrtps_c.h
+[1.214s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/robot_state__rosidl_typesupport_fastrtps_c.h
+[1.215s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates__rosidl_typesupport_fastrtps_c.h
+[1.215s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points__rosidl_typesupport_fastrtps_c.h
+[1.216s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates_list__rosidl_typesupport_fastrtps_c.h
+[1.216s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/lib/libcamera_interface_pkg__rosidl_typesupport_fastrtps_c.so
+[1.216s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg
+[1.216s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv
+[1.216s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail
+[1.216s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/set_calibration__rosidl_typesupport_introspection_c.h
+[1.216s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/set_calibration__type_support.c
+[1.217s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/update_n20_set_points__type_support.c
+[1.217s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/update_n20_set_points__rosidl_typesupport_introspection_c.h
+[1.217s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg
+[1.217s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail
+[1.217s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points__type_support.c
+[1.217s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points_list__type_support.c
+[1.217s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points__rosidl_typesupport_introspection_c.h
+[1.217s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates_list__type_support.c
+[1.218s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/robot_state__type_support.c
+[1.218s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates_list__rosidl_typesupport_introspection_c.h
+[1.218s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates__type_support.c
+[1.218s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/robot_state__rosidl_typesupport_introspection_c.h
+[1.218s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates__rosidl_typesupport_introspection_c.h
+[1.218s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points_list__rosidl_typesupport_introspection_c.h
+[1.218s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[1.219s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/lib/libcamera_interface_pkg__rosidl_typesupport_introspection_c.so
+[1.219s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/lib/libcamera_interface_pkg__rosidl_typesupport_c.so
+[1.219s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg
+[1.220s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv
+[1.220s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail
+[1.220s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/update_n20_set_points__type_support.hpp
+[1.220s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/update_n20_set_points__struct.hpp
+[1.220s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/set_calibration__type_support.hpp
+[1.221s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/set_calibration__traits.hpp
+[1.221s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/set_calibration__struct.hpp
+[1.221s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/set_calibration__builder.hpp
+[1.221s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/update_n20_set_points__traits.hpp
+[1.221s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/update_n20_set_points__builder.hpp
+[1.221s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/set_calibration.hpp
+[1.221s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/update_n20_set_points.hpp
+[1.221s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg
+[1.221s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/points_list.hpp
+[1.222s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/coordinates_list.hpp
+[1.224s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/rosidl_generator_cpp__visibility_control.hpp
+[1.225s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail
+[1.225s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/robot_state__type_support.hpp
+[1.225s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points__struct.hpp
+[1.225s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points_list__struct.hpp
+[1.225s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/robot_state__struct.hpp
+[1.226s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/robot_state__builder.hpp
+[1.226s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates__traits.hpp
+[1.226s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points_list__builder.hpp
+[1.226s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates__builder.hpp
+[1.226s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates__type_support.hpp
+[1.226s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points__type_support.hpp
+[1.226s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points_list__traits.hpp
+[1.226s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points__builder.hpp
+[1.226s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates__struct.hpp
+[1.227s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates_list__struct.hpp
+[1.227s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/robot_state__traits.hpp
+[1.227s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates_list__traits.hpp
+[1.227s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates_list__builder.hpp
+[1.227s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points_list__type_support.hpp
+[1.227s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points__traits.hpp
+[1.227s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates_list__type_support.hpp
+[1.227s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/points.hpp
+[1.227s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/coordinates.hpp
+[1.228s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/robot_state.hpp
+[1.228s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg
+[1.228s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv
+[1.228s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail
+[1.228s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/dds_fastrtps
+[1.229s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/update_n20_set_points__rosidl_typesupport_fastrtps_cpp.hpp
+[1.229s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/set_calibration__rosidl_typesupport_fastrtps_cpp.hpp
+[1.229s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg
+[1.229s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail
+[1.229s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/dds_fastrtps
+[1.229s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates_list__rosidl_typesupport_fastrtps_cpp.hpp
+[1.229s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/robot_state__rosidl_typesupport_fastrtps_cpp.hpp
+[1.229s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates__rosidl_typesupport_fastrtps_cpp.hpp
+[1.229s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points__rosidl_typesupport_fastrtps_cpp.hpp
+[1.230s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points_list__rosidl_typesupport_fastrtps_cpp.hpp
+[1.230s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[1.230s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/lib/libcamera_interface_pkg__rosidl_typesupport_fastrtps_cpp.so
+[1.230s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg
+[1.230s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv
+[1.230s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail
+[1.230s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/update_n20_set_points__type_support.cpp
+[1.230s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/set_calibration__type_support.cpp
+[1.231s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/set_calibration__rosidl_typesupport_introspection_cpp.hpp
+[1.231s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/srv/detail/update_n20_set_points__rosidl_typesupport_introspection_cpp.hpp
+[1.232s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg
+[1.232s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail
+[1.232s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points_list__rosidl_typesupport_introspection_cpp.hpp
+[1.232s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points__type_support.cpp
+[1.233s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/robot_state__rosidl_typesupport_introspection_cpp.hpp
+[1.233s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates_list__type_support.cpp
+[1.233s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates__type_support.cpp
+[1.233s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points__rosidl_typesupport_introspection_cpp.hpp
+[1.233s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates__rosidl_typesupport_introspection_cpp.hpp
+[1.233s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/points_list__type_support.cpp
+[1.233s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/coordinates_list__rosidl_typesupport_introspection_cpp.hpp
+[1.233s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/include/camera_interface_pkg/camera_interface_pkg/msg/detail/robot_state__type_support.cpp
+[1.233s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/lib/libcamera_interface_pkg__rosidl_typesupport_introspection_cpp.so
+[1.233s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/lib/libcamera_interface_pkg__rosidl_typesupport_cpp.so
+[1.234s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/environment/pythonpath.sh
+[1.234s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/environment/pythonpath.dsv
+[1.234s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg-0.0.0-py3.10.egg-info
+[1.234s] -- Installing: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg-0.0.0-py3.10.egg-info/dependency_links.txt
+[1.234s] -- Installing: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg-0.0.0-py3.10.egg-info/PKG-INFO
+[1.234s] -- Installing: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg-0.0.0-py3.10.egg-info/top_level.txt
+[1.235s] -- Installing: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg-0.0.0-py3.10.egg-info/SOURCES.txt
+[1.235s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg
+[1.235s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/__init__.py
+[1.235s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/_camera_interface_pkg_s.ep.rosidl_typesupport_introspection_c.c
+[1.235s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/_camera_interface_pkg_s.ep.rosidl_typesupport_c.c
+[1.236s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/camera_interface_pkg_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[1.236s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/srv
+[1.236s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/srv/__init__.py
+[1.237s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/srv/_update_n20_set_points_s.c
+[1.237s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/srv/_set_calibration_s.c
+[1.237s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/srv/_update_n20_set_points.py
+[1.237s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/srv/_set_calibration.py
+[1.237s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/libcamera_interface_pkg__rosidl_generator_py.so
+[1.238s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/camera_interface_pkg_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[1.238s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/camera_interface_pkg_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[1.238s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/_camera_interface_pkg_s.ep.rosidl_typesupport_fastrtps_c.c
+[1.238s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/msg
+[1.238s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/msg/__init__.py
+[1.238s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/msg/_points_list_s.c
+[1.239s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/msg/_robot_state.py
+[1.239s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/msg/_points_list.py
+[1.239s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/msg/_coordinates_list.py
+[1.239s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/msg/_coordinates.py
+[1.239s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/msg/_coordinates_list_s.c
+[1.239s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/msg/_coordinates_s.c
+[1.239s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/msg/_points.py
+[1.239s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/msg/_points_s.c
+[1.240s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/msg/_robot_state_s.c
+[1.291s] Listing '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg'...
+[1.291s] Listing '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/msg'...
+[1.291s] Listing '/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/srv'...
+[1.300s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/camera_interface_pkg_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[1.301s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/camera_interface_pkg_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[1.302s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/local/lib/python3.10/dist-packages/camera_interface_pkg/camera_interface_pkg_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[1.303s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/lib/libcamera_interface_pkg__rosidl_generator_py.so
+[1.305s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/msg/RobotState.idl
+[1.305s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/msg/Points.idl
+[1.305s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/msg/PointsList.idl
+[1.305s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/msg/Coordinates.idl
+[1.305s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/msg/CoordinatesList.idl
+[1.306s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/srv/UpdateN20SetPoints.idl
+[1.306s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/srv/SetCalibration.idl
+[1.306s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/msg/RobotState.msg
+[1.306s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/msg/Points.msg
+[1.306s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/msg/PointsList.msg
+[1.306s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/msg/Coordinates.msg
+[1.306s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/msg/CoordinatesList.msg
+[1.306s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/srv/UpdateN20SetPoints.srv
+[1.306s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/srv/UpdateN20SetPoints_Request.msg
+[1.307s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/srv/UpdateN20SetPoints_Response.msg
+[1.307s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/srv/SetCalibration.srv
+[1.307s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/srv/SetCalibration_Request.msg
+[1.307s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/srv/SetCalibration_Response.msg
+[1.307s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/ament_index/resource_index/package_run_dependencies/camera_interface_pkg
+[1.307s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/ament_index/resource_index/parent_prefix_path/camera_interface_pkg
+[1.308s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/environment/ament_prefix_path.sh
+[1.308s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/environment/ament_prefix_path.dsv
+[1.308s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/environment/path.sh
+[1.308s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/environment/path.dsv
+[1.308s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/local_setup.bash
+[1.308s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/local_setup.sh
+[1.308s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/local_setup.zsh
+[1.309s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/local_setup.dsv
+[1.309s] -- Installing: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/package.dsv
+[1.309s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/ament_index/resource_index/packages/camera_interface_pkg
+[1.309s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/export_camera_interface_pkg__rosidl_generator_cExport.cmake
+[1.309s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/export_camera_interface_pkg__rosidl_generator_cExport-noconfig.cmake
+[1.309s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/export_camera_interface_pkg__rosidl_typesupport_fastrtps_cExport.cmake
+[1.310s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/export_camera_interface_pkg__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[1.310s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/camera_interface_pkg__rosidl_typesupport_introspection_cExport.cmake
+[1.310s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/camera_interface_pkg__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[1.311s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/camera_interface_pkg__rosidl_typesupport_cExport.cmake
+[1.311s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/camera_interface_pkg__rosidl_typesupport_cExport-noconfig.cmake
+[1.311s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/export_camera_interface_pkg__rosidl_generator_cppExport.cmake
+[1.311s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/export_camera_interface_pkg__rosidl_typesupport_fastrtps_cppExport.cmake
+[1.311s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/export_camera_interface_pkg__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[1.312s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/camera_interface_pkg__rosidl_typesupport_introspection_cppExport.cmake
+[1.312s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/camera_interface_pkg__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[1.312s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/camera_interface_pkg__rosidl_typesupport_cppExport.cmake
+[1.312s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/camera_interface_pkg__rosidl_typesupport_cppExport-noconfig.cmake
+[1.313s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/export_camera_interface_pkg__rosidl_generator_pyExport.cmake
+[1.313s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/export_camera_interface_pkg__rosidl_generator_pyExport-noconfig.cmake
+[1.313s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/rosidl_cmake-extras.cmake
+[1.314s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/ament_cmake_export_include_directories-extras.cmake
+[1.314s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/ament_cmake_export_libraries-extras.cmake
+[1.314s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/ament_cmake_export_targets-extras.cmake
+[1.314s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[1.314s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/ament_cmake_export_dependencies-extras.cmake
+[1.314s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[1.314s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/camera_interface_pkgConfig.cmake
+[1.314s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/cmake/camera_interface_pkgConfig-version.cmake
+[1.315s] -- Up-to-date: /home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_interface_pkg/share/camera_interface_pkg/package.xml
+[1.327s] Invoked command in '/home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_interface_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/achintya/Software/ROSPlayground/camera_ws_main/install/camera_main_pkg:/opt/ros/humble /usr/bin/cmake --install /home/achintya/Software/ROSPlayground/camera_ws_main/build/camera_interface_pkg

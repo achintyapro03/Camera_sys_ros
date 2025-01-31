@@ -24,7 +24,7 @@ def generate_launch_description():
         name='video_processor_node_right',
         output='screen',
         parameters=[
-            {'camera_id': 4},
+            {'camera_id': 0},
             {'camera_name': 'cam_pos'},
             {'starting_mode': starting_mode}
         ],
