@@ -68,7 +68,7 @@ The system mimics human binocular convergence:
 
 ## 3. System Architecture
 
-![System Architecture](assets/system_diagram.png)
+![System Architecture](https://github.com/user-attachments/assets/f9dbbf83-6327-46ea-86db-6a4add5be3fa)
 
 The diagram above illustrates the ROS 2 node communication graph:
 
