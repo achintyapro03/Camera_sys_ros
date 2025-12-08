@@ -66,9 +66,28 @@ The system mimics human binocular convergence:
 
 ---
 
-## 3. ROS Packages (inside `src/`)
+## 3. System Architecture
 
-### 3.1 camera_main_pkg — Core Runtime Logic
+![System Architecture](assets/system_diagram.png)
+
+The diagram above illustrates the ROS 2 node communication graph:
+
+- **video_processor_node_left** and **video_processor_node_right**: Capture and process images from both cameras, publishing 2D keypoint lists
+- **interpolator_node_1**: Central processing node that:
+  - Receives motor angles and sensor data
+  - Performs triangulation using inputs from both cameras
+  - Publishes joint states and 3D coordinates
+- **controller_node_1**: Optional manual control interface
+- **robot_state_publisher**: Transforms joint states into TF frames
+- **plotter_node_1**: Visualizes the 3D skeleton in real-time
+- **tf** and **/transform_listener_impl**: Handle coordinate frame transformations
+- **RViz**: Displays the complete system visualization
+
+---
+
+## 4. ROS Packages (inside `src/`)
+
+### 4.1 camera_main_pkg — Core Runtime Logic
 
 This is the main package that runs the entire pipeline.
 
@@ -156,7 +175,7 @@ Used to validate:
 - TF tree correctness
 - Extrinsic matrix generation
 
-### 3.2 camera_interface_pkg — ROS 2 Interfaces
+### 4.2 camera_interface_pkg — ROS 2 Interfaces
 
 Defines custom messages and services used across the system.
 
@@ -173,7 +192,7 @@ Defines custom messages and services used across the system.
 
 These are used by image processors, triangulation nodes, and Arduino communication logic.
 
-### 3.3 camera_bringup_pkg — System Launch Files
+### 4.3 camera_bringup_pkg — System Launch Files
 
 The central launch file: `main_launch.py`
 
@@ -189,13 +208,13 @@ You can switch between:
 - **Calibration Mode** (`starting_mode = 1`)
 - **Human Tracking Mode** (`starting_mode = 3`)
 
-### 3.4 camera_cpp_pkg — (Optional)
+### 4.4 camera_cpp_pkg — (Optional)
 
 Placeholder for future C++ extensions.
 
 ---
 
-## 4. Hardware Code
+## 5. Hardware Code
 
 Located under `hardware_code/`
 
@@ -228,7 +247,7 @@ Simple standalone script to:
 
 ---
 
-## 5. Assets
+## 6. Assets
 
 ```
 assets/
@@ -256,7 +275,7 @@ Preconfigured view:
 
 ---
 
-## 6. Installation
+## 7. Installation
 
 ### Dependencies
 
@@ -274,7 +293,7 @@ pip install opencv-python mediapipe scipy pyserial PyQt5 matplotlib
 
 ---
 
-## 7. Building the Workspace
+## 8. Building the Workspace
 
 From workspace root:
 
@@ -288,7 +307,7 @@ Make sure `src/` contains exactly the ROS packages described earlier.
 
 ---
 
-## 8. Flashing Arduino Firmware
+## 9. Flashing Arduino Firmware
 
 Using Arduino IDE:
 
@@ -303,7 +322,7 @@ sudo usermod -a -G dialout $USER
 
 ---
 
-## 9. Running the System
+## 10. Running the System
 
 ### Calibration Mode (ArUco-Based)
 
@@ -353,7 +372,7 @@ Debug tool used for:
 
 ---
 
-## 10. Topics Overview
+## 11. Topics Overview
 
 ### Input Topics
 - `/cam_neg/points_list` — 2D keypoints (left)
@@ -370,7 +389,7 @@ Debug tool used for:
 
 ---
 
-## 11. Citation
+## 12. Citation
 
 ```bibtex
 @INPROCEEDINGS{10821569,
@@ -387,6 +406,7 @@ Debug tool used for:
 ```
 
 ---
+
 ## License
 
 MIT License
