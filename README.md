@@ -373,13 +373,16 @@ Debug tool used for:
 ## 11. Citation
 
 ```bibtex
-@inproceedings{harsha2024biomimetic,
-  title={Biomimetic Convergence-based High resolution Depth Estimation},
+@INPROCEEDINGS{10821569,
   author={Harsha, Achintya and Jonna, Prashanth and R, Nitheezkant and Rao, Madhav},
-  booktitle={2024 18th International Conference on Control, Automation, Robotics and Vision (ICARCV)},
-  pages={679--683},
+  booktitle={2024 18th International Conference on Control, Automation, Robotics and Vision (ICARCV)}, 
+  title={Biomimetic Convergence-Based High Resolution Depth Estimation}, 
   year={2024},
-  organization={IEEE}
+  volume={},
+  number={},
+  pages={679-683},
+  keywords={Meters;Solid modeling;Accuracy;Three-dimensional displays;Laser radar;Depth measurement;Robot vision systems;Cameras;Real-time systems;Stereo vision},
+  doi={10.1109/ICARCV63323.2024.10821569}
 }
 ```
 
